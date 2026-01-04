@@ -1,0 +1,45 @@
+# R package
+.Rproj.user/
+.Rhistory
+.RData
+.Ruserdata
+*.Rproj
+
+# Generated documentation
+man/
+.Rd
+NAMESPACE
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Compiled files
+*.o
+*.so
+*.a
+*.la
+*.lo
+*.class
+*.o
+*.lo
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Temporary files
+*.tmp
+*.temp
+.temp/
+
+# Build
+/inst/doc
