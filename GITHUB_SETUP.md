@@ -47,7 +47,7 @@ git commit -m "Initial commit: DataPreparation v1.0.0 - Production ready"
 Quick setup — if you've done this kind of thing before
 
 or HTTPS Clone button with URL like:
-https://github.com/YOUR_USERNAME/DataPreparation.git
+https://github.com/aabderrahimaariche-hue/DataPreparation.git
 ```
 
 ---
@@ -60,7 +60,7 @@ Copy the URL from Step 2 and run:
 cd "c:\Users\aaric\projects\HARDVARD-DATA-SCIENCE--CAPSTONE-\DataPreparation"
 
 # Add GitHub as remote (replace URL)
-git remote add origin https://github.com/YOUR_USERNAME/DataPreparation.git
+git remote add origin https://github.com/aabderrahimaariche-hue/DataPreparation.git
 
 # Verify remote was added
 git remote -v
@@ -77,7 +77,7 @@ git push -u origin main
 ```
 Counting objects: 15, done.
 ...
-To https://github.com/YOUR_USERNAME/DataPreparation.git
+To https://github.com/aabderrahimaariche-hue/DataPreparation.git
  * [new branch]      main -> main
 Branch 'main' set up to track remote branch 'main' from 'origin'.
 ```
@@ -86,7 +86,7 @@ Branch 'main' set up to track remote branch 'main' from 'origin'.
 
 ### Step 4: Verify on GitHub
 
-1. Open https://github.com/YOUR_USERNAME/DataPreparation
+1. Open https://github.com/aabderrahimaariche-hue/DataPreparation
 2. You should see all your files and folders
 3. README.md should display as the main page
 
@@ -98,7 +98,7 @@ Now you can install from anywhere:
 
 ```r
 # Install from GitHub
-devtools::install_github("YOUR_USERNAME/DataPreparation")
+devtools::install_github("aabderrahimaariche-hue/DataPreparation")
 
 # Load the package
 library(DataPreparation)
@@ -151,13 +151,13 @@ gh auth login
 
 **For you and your team:**
 ```r
-devtools::install_github("YOUR_USERNAME/DataPreparation")
+devtools::install_github("aabderrahimaariche-hue/DataPreparation")
 ```
 
 **For public use (add to README):**
 ```r
 # Install
-devtools::install_github("YOUR_USERNAME/DataPreparation")
+devtools::install_github("aabderrahimaariche-hue/DataPreparation")
 
 # Load and use
 library(DataPreparation)
@@ -184,7 +184,7 @@ Then on GitHub:
 
 **Now users can:**
 ```r
-devtools::install_github("YOUR_USERNAME/DataPreparation@v1.0.0")
+devtools::install_github("aabderrahimaariche-hue/DataPreparation@v1.0.0")
 ```
 
 ---
@@ -211,7 +211,7 @@ git push
 
 ### 1. Share with Team
 ```
-Share URL: https://github.com/YOUR_USERNAME/DataPreparation
+Share URL: https://github.com/aabderrahimaariche-hue/DataPreparation
 ```
 
 ### 2. Archive on Zenodo (Optional, for Academic Citation)
@@ -231,7 +231,7 @@ Share URL: https://github.com/YOUR_USERNAME/DataPreparation
 ## Installation
 
 # From GitHub:
-devtools::install_github("YOUR_USERNAME/DataPreparation")
+devtools::install_github("aabderrahimaariche-hue/DataPreparation")
 
 # Then load:
 library(DataPreparation)
@@ -260,7 +260,7 @@ cd "c:\Users\aaric\projects\HARDVARD-DATA-SCIENCE--CAPSTONE-\DataPreparation"
 git init
 git add .
 git commit -m "Initial commit: DataPreparation v1.0.0"
-git remote add origin https://github.com/YOUR_USERNAME/DataPreparation.git
+git remote add origin https://github.com/aabderrahimaariche-hue/DataPreparation.git
 git branch -M main
 git push -u origin main
 
@@ -269,7 +269,7 @@ git push -u origin main
 
 ```r
 # In R:
-devtools::install_github("YOUR_USERNAME/DataPreparation")
+devtools::install_github("aabderrahimaariche-hue/DataPreparation")
 library(DataPreparation)
 ```
 
@@ -290,7 +290,7 @@ pwd  # Shows current path
 git remote remove origin
 
 # Then add again:
-git remote add origin https://github.com/YOUR_USERNAME/DataPreparation.git
+git remote add origin https://github.com/aabderrahimaariche-hue/DataPreparation.git
 ```
 
 ### Authentication failed
@@ -312,7 +312,7 @@ gitcreds::gitcreds_set()
 You now have your professional R package on GitHub, ready to install with:
 
 ```r
-devtools::install_github("YOUR_USERNAME/DataPreparation")
+devtools::install_github("aabderrahimaariche-hue/DataPreparation")
 ```
 
 🎉 **Share the link with anyone who needs the package!**

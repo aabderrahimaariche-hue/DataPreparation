@@ -65,7 +65,7 @@ Advanced linguistic feature extraction with dynamic pattern discovery:
 # Install devtools if not already installed
 # install.packages("devtools")
 
-devtools::install_github("yourusername/DataPreparation")
+devtools::install_github("aabderrahimaariche-hue/DataPreparation")
 ```
 
 ### For local development:

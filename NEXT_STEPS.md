@@ -190,7 +190,7 @@ profile <- extract_string_linguistic_profile(movies_df, "title", "movieId")
 
 ```r
 # Users anywhere can install:
-devtools::install_github("yourusername/DataPreparation")
+devtools::install_github("aabderrahimaariche-hue/DataPreparation")
 library(DataPreparation)
 
 # Or after CRAN:

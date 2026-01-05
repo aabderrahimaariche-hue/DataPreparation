@@ -27,14 +27,14 @@ extract_timestamp_features <- function(data, timestamp_col = "timestamp") {
 #' Extract 4-Digit Year from String Column
 #'
 #' @param data A data frame
-#' @param title_col String column name to extract year from
+#' @param string_col String column name to extract year from
 #'
 #' @return Data frame with extracted year column
 #'
 #' @export
-extract_year_from_title <- function(data, title_col = "title") {
-  if(!(title_col %in% colnames(data))) stop(paste("Column not found:", title_col))
+extract_year_from_string <- function(data, string_col = "string") {
+  if(!(string_col %in% colnames(data))) stop(paste("Column not found:", string_col))
   data %>%
-    mutate(year = str_extract(.data[[title_col]], "\\d{4}")) %>%
+    mutate(year = str_extract(.data[[string_col]], "\\d{4}")) %>%
     mutate(year = as.numeric(year))
 }

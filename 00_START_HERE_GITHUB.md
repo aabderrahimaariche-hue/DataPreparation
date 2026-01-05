@@ -36,7 +36,7 @@ git commit -m "Initial commit: DataPreparation v1.0.0"
 
 ### STEP 3: Push to GitHub (2 min)
 ```powershell
-git remote add origin https://github.com/YOUR_USERNAME/DataPreparation.git
+git remote add origin https://github.com/aabderrahimaariche-hue/DataPreparation.git
 git branch -M main
 git push -u origin main
 ```
@@ -48,7 +48,7 @@ git push -u origin main
 Install your package from **anywhere**:
 
 ```r
-devtools::install_github("YOUR_USERNAME/DataPreparation")
+devtools::install_github("aabderrahimaariche-hue/DataPreparation")
 library(DataPreparation)
 ```
 
@@ -81,12 +81,12 @@ All 44 functions ready to use! ✅
 
 **Share this command with anyone:**
 ```r
-devtools::install_github("YOUR_USERNAME/DataPreparation")
+devtools::install_github("aabderrahimaariche-hue/DataPreparation")
 ```
 
 **Or share the GitHub link:**
 ```
-https://github.com/YOUR_USERNAME/DataPreparation
+https://github.com/aabderrahimaariche-hue/DataPreparation
 ```
 
 ---

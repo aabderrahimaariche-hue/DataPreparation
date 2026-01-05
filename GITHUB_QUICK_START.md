@@ -22,9 +22,9 @@ git commit -m "Initial commit: DataPreparation v1.0.0"
 
 ```powershell
 # Copy HTTPS URL from GitHub (Step 2)
-# Replace YOUR_USERNAME with your actual GitHub username
+# Replace aabderrahimaariche-hue with your actual GitHub username
 
-git remote add origin https://github.com/YOUR_USERNAME/DataPreparation.git
+git remote add origin https://github.com/aabderrahimaariche-hue/DataPreparation.git
 git branch -M main
 git push -u origin main
 ```
@@ -35,7 +35,7 @@ Once pushed, install from anywhere:
 
 ```r
 # Install from GitHub
-devtools::install_github("YOUR_USERNAME/DataPreparation")
+devtools::install_github("aabderrahimaariche-hue/DataPreparation")
 
 # Load it
 library(DataPreparation)
@@ -55,8 +55,8 @@ See: `GITHUB_SETUP.md` in this folder for complete step-by-step instructions
 ## 🎯 What You'll Have
 
 ```
-GitHub: https://github.com/YOUR_USERNAME/DataPreparation
-Install: devtools::install_github("YOUR_USERNAME/DataPreparation")
+GitHub: https://github.com/aabderrahimaariche-hue/DataPreparation
+Install: devtools::install_github("aabderrahimaariche-hue/DataPreparation")
 ```
 
 Anyone can then install with one command! 🎉

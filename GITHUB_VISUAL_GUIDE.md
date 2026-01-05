@@ -54,7 +54,7 @@
 │                                                                  │
 │  In R anywhere (your computer or someone else's):              │
 │                                                                  │
-│  devtools::install_github("YOUR_USERNAME/DataPreparation")     │
+│  devtools::install_github("aabderrahimaariche-hue/DataPreparation")     │
 │  library(DataPreparation)                                       │
 │  ?remove_na_columns                                             │
 │                                                                  │
@@ -101,7 +101,7 @@ Total Time                 7 minutes   ✅
 You can:
 
 📦 Install from GitHub
-   └─ devtools::install_github("YOUR_USERNAME/DataPreparation")
+   └─ devtools::install_github("aabderrahimaariche-hue/DataPreparation")
 
 📤 Share with others
    └─ Just give them the install command!
@@ -121,7 +121,7 @@ You can:
 ## What You'll See on GitHub
 
 ```
-https://github.com/YOUR_USERNAME/DataPreparation
+https://github.com/aabderrahimaariche-hue/DataPreparation
 
                           DataPreparation
                                 
@@ -151,7 +151,7 @@ git commit -m "Initial commit: DataPreparation v1.0.0"
 # Then copy the HTTPS URL
 
 # STEP 3: Connect & Push
-git remote add origin https://github.com/YOUR_USERNAME/DataPreparation.git
+git remote add origin https://github.com/aabderrahimaariche-hue/DataPreparation.git
 git branch -M main
 git push -u origin main
 ```
@@ -163,10 +163,10 @@ git push -u origin main
 After pushing to GitHub, the install command is:
 
 ```r
-devtools::install_github("YOUR_USERNAME/DataPreparation")
+devtools::install_github("aabderrahimaariche-hue/DataPreparation")
 ```
 
-**Replace `YOUR_USERNAME` with your actual GitHub username!**
+**Replace `aabderrahimaariche-hue` with your actual GitHub username!**
 
 ---
 
@@ -191,7 +191,7 @@ Once on GitHub, share this:
 
 ## Installation
 
-devtools::install_github("YOUR_USERNAME/DataPreparation")
+devtools::install_github("aabderrahimaariche-hue/DataPreparation")
 
 ## Usage
 

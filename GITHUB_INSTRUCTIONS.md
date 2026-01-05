@@ -4,7 +4,7 @@
 
 Get your DataPreparation package on GitHub so you (and anyone else) can install it with:
 ```r
-devtools::install_github("YOUR_USERNAME/DataPreparation")
+devtools::install_github("aabderrahimaariche-hue/DataPreparation")
 ```
 
 ---
@@ -65,7 +65,7 @@ git commit -m "Initial commit: DataPreparation v1.0.0 - Production ready"
 
 4. **Copy the HTTPS URL** from the next page (looks like):
    ```
-   https://github.com/YOUR_USERNAME/DataPreparation.git
+   https://github.com/aabderrahimaariche-hue/DataPreparation.git
    ```
 
 ---
@@ -79,7 +79,7 @@ git commit -m "Initial commit: DataPreparation v1.0.0 - Production ready"
 cd "c:\Users\aaric\projects\HARDVARD-DATA-SCIENCE--CAPSTONE-\DataPreparation"
 
 # Add GitHub as remote (replace URL with yours from Step 2)
-git remote add origin https://github.com/YOUR_USERNAME/DataPreparation.git
+git remote add origin https://github.com/aabderrahimaariche-hue/DataPreparation.git
 
 # Verify it was added
 git remote -v
@@ -105,7 +105,7 @@ git push -u origin main
 ```
 Counting objects: 100% (15/15), done.
 ...
-To https://github.com/YOUR_USERNAME/DataPreparation.git
+To https://github.com/aabderrahimaariche-hue/DataPreparation.git
  * [new branch]      main -> main
 Branch 'main' set up to track remote branch 'main' from origin.
 ```
@@ -114,14 +114,14 @@ Branch 'main' set up to track remote branch 'main' from origin.
 
 ## ✅ Verify It Worked
 
-1. **Check GitHub**: Open https://github.com/YOUR_USERNAME/DataPreparation
+1. **Check GitHub**: Open https://github.com/aabderrahimaariche-hue/DataPreparation
    - You should see all your files
    - README.md should display nicely
 
 2. **Test Installation** (in R):
    ```r
    # Install from GitHub
-   devtools::install_github("YOUR_USERNAME/DataPreparation")
+   devtools::install_github("aabderrahimaariche-hue/DataPreparation")
    
    # Load it
    library(DataPreparation)
@@ -138,7 +138,7 @@ From your computer or anyone else's:
 
 ```r
 # Install directly from GitHub
-devtools::install_github("YOUR_USERNAME/DataPreparation")
+devtools::install_github("aabderrahimaariche-hue/DataPreparation")
 
 # Load the package
 library(DataPreparation)
@@ -192,7 +192,7 @@ Then on GitHub:
 
 Now users can install a specific version:
 ```r
-devtools::install_github("YOUR_USERNAME/DataPreparation@v1.0.0")
+devtools::install_github("aabderrahimaariche-hue/DataPreparation@v1.0.0")
 ```
 
 ---
@@ -202,12 +202,12 @@ devtools::install_github("YOUR_USERNAME/DataPreparation@v1.0.0")
 Share this command with anyone who needs the package:
 
 ```r
-devtools::install_github("YOUR_USERNAME/DataPreparation")
+devtools::install_github("aabderrahimaariche-hue/DataPreparation")
 ```
 
 Or share the GitHub link:
 ```
-https://github.com/YOUR_USERNAME/DataPreparation
+https://github.com/aabderrahimaariche-hue/DataPreparation
 ```
 
 ---
@@ -224,7 +224,7 @@ cd "c:\Users\aaric\projects\HARDVARD-DATA-SCIENCE--CAPSTONE-\DataPreparation"
 **Solution**: Remove the old remote first:
 ```powershell
 git remote remove origin
-git remote add origin https://github.com/YOUR_USERNAME/DataPreparation.git
+git remote add origin https://github.com/aabderrahimaariche-hue/DataPreparation.git
 ```
 
 ### Problem: Authentication fails
@@ -262,10 +262,10 @@ git push
 Your DataPreparation package is now on GitHub and anyone can install it with:
 
 ```r
-devtools::install_github("YOUR_USERNAME/DataPreparation")
+devtools::install_github("aabderrahimaariche-hue/DataPreparation")
 ```
 
-**GitHub URL**: https://github.com/YOUR_USERNAME/DataPreparation
+- **GitHub URL**: https://github.com/aabderrahimaariche-hue/DataPreparation
 
 ---
 
