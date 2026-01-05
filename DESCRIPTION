@@ -20,4 +20,5 @@ Imports:
     rlang,
     tibble
 Suggests:
-    testthat (>= 3.0.0)
+    testthat (>= 3.0.0),
+    data.table
