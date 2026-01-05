@@ -1,0 +1,23 @@
+Package: DataPreparation
+Title: General-Purpose Data Preparation and Feature Engineering Library
+Version: 1.0.0
+Authors@R: person("AARICHE", "ABDERRAHIM", email = "your.email@example.com", role = c("aut", "cre"))
+Description: A comprehensive, modular R package for data preparation and feature engineering.
+    Provides functions for missing value handling, numeric feature transformations, 
+    string/text analysis, n-gram generation, linguistic feature extraction, and advanced 
+    pattern discovery. Functions are general-purpose and reusable across different projects 
+    and datasets.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.2.0
+Imports:
+    dplyr,
+    tidyr,
+    stringr,
+    purrr,
+    zoo,
+    rlang,
+    tibble
+Suggests:
+    testthat (>= 3.0.0)
