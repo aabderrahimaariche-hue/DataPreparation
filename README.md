@@ -51,6 +51,27 @@ Advanced linguistic feature extraction:
 - `compute_user_linguistic_preferences()` - Extract user-specific preferences
 - `compute_position_importance()` - Rank position importance
 
+### 🔍 Module 8: Dataset Inspection
+Inspect and validate datasets before processing:
+- `inspect_dataset()` - Get comprehensive dataset overview
+- `validate_for_processing()` - Check if data is suitable for functions
+- `preview_dataset()` - Display formatted data preview
+- `check_memory_usage()` - Monitor memory usage of datasets
+
+### 🤖 Module 9: Automatic Workflow Generator
+Generate complete analysis workflows without manual coding:
+- `detect_datasets()` - Automatically find all datasets in memory
+- `show_dataset_columns()` - Display column names and types
+- `generate_workflow_interactive()` - Interactive menu-driven workflow generator
+- `generate_workflow_script()` - Auto-generate complete R workflow code
+
+**Key Benefit**: No more hardcoding column names! The generator:
+✅ Detects datasets and columns automatically
+✅ Shows interactive menus for selection
+✅ Generates complete, ready-to-run workflow scripts
+✅ Works with ANY dataset (movies, cancer data, products, custom data)
+✅ Saves timestamped script files for reproducibility
+
 ## 📦 Installation
 
 ### Install from GitHub:
@@ -69,6 +90,61 @@ library(DataPreparation)
 
 ## 🚀 Quick Start
 
+### Example 0: Automatic Workflow Generation (NEW!)
+```r
+# The easy way: Let the generator do everything!
+library(DataPreparation)
+
+# Load multiple datasets
+movies <- data.frame(movieId = 1:3, title = c("Matrix", "Inception", "Interstellar"), rating = c(8.7, 8.8, 8.6))
+cancer <- data.frame(patientId = 101:103, diagnosis = c("Breast", "Lung", "Colon"), survival = c(48, 12, 72))
+products <- data.frame(productId = 1:2, description = c("Laptop Computer", "Wireless Mouse"), sales = c(500, 150))
+
+# Discover what datasets you have
+detect_datasets()
+# Output: Found 3 datasets: movies, cancer, products
+
+# Interactive workflow generation
+generate_workflow_interactive()
+# Follow the menu:
+# 1. Choose dataset: cancer
+# 2. Choose string column: diagnosis
+# 3. Choose target column: survival
+# 4. Choose analysis type: Full Analysis
+# Generated: workflow_cancer_20260105_140530.R
+
+# Run the generated workflow
+source("workflow_cancer_20260105_140530.R")
+# Complete analysis runs automatically!
+```
+
+See [WORKFLOW_GENERATOR_GUIDE.md](WORKFLOW_GENERATOR_GUIDE.md) for more details and examples.
+
+### Example 1: Inspect Your Dataset First
+```r
+# Before processing, understand your data
+library(DataPreparation)
+
+movies <- data.frame(
+  movieId = 1:3,
+  title = c("The Matrix", "Inception", "Interstellar"),
+  rating = c(8.7, 8.8, 8.6)
+)
+
+# Inspect the dataset
+inspect_dataset(movies)
+
+# Check if data is suitable for processing
+validate_for_processing(
+  data = movies,
+  string_cols = "title",
+  id_col = "movieId"
+)
+
+# Preview the data
+preview_dataset(movies)
+```
+
 ### Example 1: Handle Missing Values
 ```r
 data <- data.frame(
@@ -84,10 +160,18 @@ scaled <- scale_betweenRange(data, "value")
 standardized <- scale_unbounded(data, "value")
 ```
 
-### Example 3: Extract N-grams
+### Example 3: Extract N-grams & Suffix/Prefix Patterns
 ```r
-titles <- data.frame(title = c("The Matrix", "Inception"))
+titles <- data.frame(movieId = 1:3, title = c("The Matrix", "Inception", "Interstellar"))
+
+# Generate n-grams
 ngrams <- generate_ngram_char_variants(titles, "title", 2, 3)
+
+# Extract suffix (last n-gram per movie)
+suffixes <- extract_suffix_patterns(ngrams$sliding$all, id_col = "movieId")
+
+# Extract prefix (first n-gram per movie)
+prefixes <- extract_prefix_patterns(ngrams$sliding$all, id_col = "movieId")
 ```
 
 ### Example 4: Linguistic Analysis
