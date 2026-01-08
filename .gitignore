@@ -5,6 +5,9 @@
 .Ruserdata
 *.Rproj
 
+# Registeries (a list of registeries relative to usages and a collection of statistics )
+registries/
+
 # Generated documentation
 man/
 .Rd
@@ -44,7 +47,5 @@ __pycache__/
 # Build
 /inst/doc
 
-# Registeries (a list of registeries relative to usages and a collection of statistics )
-registries/
 
 
