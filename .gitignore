@@ -1,4 +1,4 @@
-# R package
+﻿# R package
 .Rproj.user/
 .Rhistory
 .RData
@@ -9,9 +9,9 @@
 registries/
 
 # Generated documentation
-man/
-.Rd
-NAMESPACE
+
+
+
 
 # IDE
 .vscode/
