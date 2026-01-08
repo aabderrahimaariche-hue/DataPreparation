@@ -1,0 +1,132 @@
+﻿QUICK REFERENCE: NEW UNIVERSAL FUNCTIONS
+
+
+PHILOSOPHY: Intelligence (IDs) + Readables (Categories) + Writables (Values)
+
+
+GROUP INTELLIGENCE FUNCTIONS (Module 10)
+
+
+1. compute_identifier_statistics(data, id_col, value_col)
+    Computes: mean, std, min, max, median, count, variance
+    Input: ANY identifier column + ANY numeric value column
+    Output: Statistics grouped by identifier
+    Examples:
+       User stats:     compute_identifier_statistics(data, "userId", "rating")
+       Movie stats:    compute_identifier_statistics(data, "movieId", "rating")
+       Customer stats: compute_identifier_statistics(data, "customerId", "price")
+       Sensor stats:   compute_identifier_statistics(data, "sensorId", "temp")
+
+2. compute_identifier_deviation(data, id_col, value_col, reference_col)
+    Computes: absolute deviation, percentage deviation from reference
+    Input: Original data with reference values already calculated
+    Output: _deviation and _deviation_pct columns
+    Examples:
+       User bias:     compute_identifier_deviation(data, "userId", "rating", "movie_mean")
+       Customer dev:  compute_identifier_deviation(data, "cId", "amount", "merchant_mean")
+
+3. classify_identifier_patterns(stats_data, value_col, pattern_type)
+    Pattern Types: "valeurization_level" or "consistency"
+    Valeurization: high/medium/low (based on mean)
+    Consistency: consistent/medium_variance/high_variance (based on std)
+    Examples:
+       User patterns: classify_identifier_patterns(user_stats, "rating", "consistency")
+       Spending:      classify_identifier_patterns(cust_stats, "amount", "valeurization_level")
+
+
+CATEGORICAL INTELLIGENCE FUNCTIONS (Module 11)
+
+
+4. encode_categorical_flags(data, categorical_col, id_col, delimiter, prefix)
+    One-Hot Encodes delimited categories into binary columns
+    Input: Pipe|Delimited|Categories or Comma,Separated or Semicolon;Lists
+    Output: Binary columns (0/1) for each category
+    Examples:
+       Genres:   encode_categorical_flags(data, "genres", "movieId", "\\|")
+       Tags:     encode_categorical_flags(data, "tags", "productId", ",")
+       Symptoms: encode_categorical_flags(data, "symptoms", "patientId", ";")
+
+5. count_categories(data, id_col, categorical_col, delimiter)
+    Counts how many categories per entity
+    Output: category_count, is_multi_category
+    Example: count_categories(data, "movieId", "genres", "\\|")
+
+6. extract_primary_category(data, id_col, categorical_col, delimiter)
+    Gets FIRST category from delimited string
+    Output: primary_category column
+    Example: extract_primary_category(data, "movieId", "genres", "\\|")
+
+7. compute_category_statistics(data, categorical_col, value_col, delimiter)
+    Statistics PER CATEGORY: mean, std, count, median
+    Input: Delimited categories + numeric values
+    Output: One row per category
+    Examples:
+       Genre stats:    compute_category_statistics(data, "genres", "rating", "\\|")
+       Tag stats:      compute_category_statistics(data, "tags", "price", ",")
+       Diagnosis:      compute_category_statistics(data, "diagnoses", "outcome", ";")
+
+8. compute_entity_category_preferences(data, id_col, cat_col, value_col, delimiter)
+    Each ENTITY's preferences for each CATEGORY
+    Preference = entity_mean - global_mean
+    Output: Pivot format (wide) with entity + pref_* columns
+    Examples:
+       User genres:    compute_entity_category_preferences(data, "userId", "genres", "rating", "\\|")
+       Cust products:  compute_entity_category_preferences(data, "customerId", "types", "purchase", ",")
+
+9. compute_category_diversity(data, categorical_col, delimiter)
+    Classify categories: niche (rare) vs mainstream (common)
+    Output: category_diversity, is_niche, is_mainstream
+    Example: compute_category_diversity(data, "genres", "\\|")
+
+10. compute_category_combinations(data, id_col, categorical_col, delimiter)
+     Find common multi-category combinations (genres that appear together)
+     Output: Combinations ranked by frequency
+     Example: compute_category_combinations(data, "movieId", "genres", "\\|")
+
+
+PARAMETER REFERENCE
+
+
+data              = Your data frame
+id_col            = Column with identifiers (userId, movieId, customerId, etc.)
+value_col         = Column with numeric values (rating, price, score, etc.)
+categorical_col   = Column with delimited categories (genres, tags, symptoms, etc.)
+reference_col     = Column with reference values for comparison (movie_mean, etc.)
+delimiter         = How categories are separated:
+                    "\\|" = Pipe-separated (Action|Drama|Comedy)
+                    ","  = Comma-separated (Tag1,Tag2,Tag3)
+                    ";"  = Semicolon-separated (Symptom1;Symptom2)
+pattern_type      = "valeurization_level" or "consistency"
+prefix            = Optional prefix for output columns (e.g., "genre_")
+
+
+QUICK WORKFLOW EXAMPLE
+
+
+# 1. User Statistics
+user_stats <- compute_identifier_statistics(data, "userId", "rating")
+
+# 2. Movie Reference Statistics
+movie_stats <- compute_identifier_statistics(data, "movieId", "rating")
+data <- data %>% left_join(movie_stats, by = "movieId")
+
+# 3. User Bias Detection
+user_bias <- compute_identifier_deviation(data, "userId", "rating", "rating_mean")
+
+# 4. Genre Encoding (for ML features)
+genre_flags <- encode_categorical_flags(data, "genres", "movieId", "\\|")
+
+# 5. Genre Statistics
+genre_stats <- compute_category_statistics(data, "genres", "rating", "\\|")
+
+# 6. User Genre Preferences
+user_prefs <- compute_entity_category_preferences(data, "userId", "genres", "rating", "\\|")
+
+# 7. Genre Diversity Analysis
+genre_diversity <- compute_category_diversity(data, "genres", "\\|")
+
+
+
+Files ready: C:\Users\aaric\projects\DataPreparation\R\
+Next: devtools::document()  devtools::check()  git push
+

@@ -1,0 +1,156 @@
+﻿
+NAMING VERIFICATION - UNIVERSAL RULES ANALYSIS
+
+
+UNIVERSAL LOGIC:
+ Intelligence = Unique Identifiers (ANY: userId, movieId, customerId, sensorId)
+ Readables = Observable Data (ANY: genres, tags, symptoms, attributes)  
+ Writables = Valeurization Values (ANY: rating, price, score, outcome)
+
+NAMING PATTERN = [ACTION VERB] + [ELEMENT] + [METRIC/OUTPUT]
+
+
+MODULE 10: GROUP INTELLIGENCE - NAMING CHECK
+
+
+1. compute_identifier_statistics()
+    ACTION: compute 
+    ELEMENT: identifier (Intelligence) 
+    METRIC: statistics 
+    UNIVERSAL:  YES - Works with ANY identifier
+    CORRECT:  YES
+
+2. compute_identifier_deviation()
+    ACTION: compute 
+    ELEMENT: identifier (Intelligence) 
+    METRIC: deviation 
+    UNIVERSAL:  YES - Works with ANY identifier
+    CORRECT:  YES
+
+3. classify_identifier_patterns()
+    ACTION: classify 
+    ELEMENT: identifier (Intelligence) 
+    METRIC: patterns 
+    UNIVERSAL:  YES - Works with ANY identifier
+    CORRECT:  YES
+
+
+MODULE 11: CATEGORICAL INTELLIGENCE - NAMING CHECK
+
+
+4. encode_categorical_flags()
+    ACTION: encode 
+    ELEMENT: categorical (Readables) 
+    METRIC: flags 
+    UNIVERSAL:  YES - Works with ANY categorical + ANY delimiter
+    CORRECT:  YES
+
+5. count_categories()
+    ACTION: count 
+    ELEMENT: categories (Readables) 
+    METRIC: (implicit: count) 
+    UNIVERSAL:  YES - Works with ANY categorical
+    CORRECT:  YES
+
+6. extract_primary_category()
+    ACTION: extract 
+    ELEMENT: category (Readables) 
+    METRIC: primary (first/main) 
+    UNIVERSAL:  YES - Works with ANY categorical
+    CORRECT:  YES
+
+7. compute_category_statistics()
+    ACTION: compute 
+    ELEMENT: category (Readables) 
+    METRIC: statistics (aggregated from Writables) 
+    UNIVERSAL:  YES - Works with ANY categorical + ANY value
+    CORRECT:  YES
+
+8. compute_entity_category_preferences()  ISSUE DETECTED
+    ACTION: compute 
+    ELEMENT: entity_category (MIXED: Intelligence + Readables)
+    METRIC: preferences 
+    ISSUE: Function name combines TWO elements (entity + category)
+    SHOULD BE: compute_category_preferences()
+                (entity is implicit - we're computing PER entity)
+    CORRECTION NEEDED: YES - Simplify to remove "entity_"
+
+9. compute_category_diversity()
+    ACTION: compute 
+    ELEMENT: category (Readables) 
+    METRIC: diversity 
+    UNIVERSAL:  YES - Works with ANY categorical
+    CORRECT:  YES
+
+10. compute_category_combinations()
+     ACTION: compute 
+     ELEMENT: category (Readables) 
+     METRIC: combinations 
+     UNIVERSAL:  YES - Works with ANY categorical
+     CORRECT:  YES
+
+
+PARAMETER NAMING CONSISTENCY CHECK
+
+
+ISSUE 1: INCONSISTENT IDENTIFIER PARAMETER NAMING
+ compute_identifier_statistics(..., identifier_col, ...)       identifier_col
+ compute_identifier_deviation(..., identifier_col, ...)        identifier_col
+ classify_identifier_patterns(...)                             NO parameter (receives stats)
+ encode_categorical_flags(..., id_col = NULL, ...)             id_col 
+ count_categories(..., id_col = NULL, ...)                     id_col 
+ extract_primary_category(..., id_col, ...)                    id_col 
+ compute_category_statistics(...)                              NO id_col (computes per category)
+ compute_entity_category_preferences(..., identifier_col, ...)  identifier_col
+ compute_category_diversity(...)                               NO id_col (computes per category)
+ compute_category_combinations(..., id_col, ...)               id_col 
+
+SHOULD BE: ALL use SAME parameter name for identifiers
+ Option A: Use "identifier_col" everywhere (more explicit, follows Intelligence concept)
+ Option B: Use "id_col" everywhere (shorter, simpler)
+ RECOMMENDATION: Use "identifier_col" for consistency with Intelligence naming
+
+
+CONCLUSION LOGIC CHECK
+
+
+The functions should follow this UNIVERSAL LOGIC:
+
+INPUT (Conclusion Logic):
+  Intelligence (id_col) + Readables (categorical_col) + Writables (value_col)
+  
+OUTPUT (What the function produces):
+  Writables (transformed/aggregated metrics)
+
+NAMING (What we call it):
+  [ACTION] + [ELEMENT] + [METRIC]
+
+VERIFICATION RESULT:
+ All functions are UNIVERSAL 
+ All names describe ACTION, not DOMAIN 
+ All work with ANY values for parameters 
+
+ISSUES FOUND:
+ ISSUE #1: Inconsistent parameter naming (id_col vs identifier_col)
+ ISSUE #2: Function name "compute_entity_category_preferences" mixes elements
+
+
+REQUIRED FIXES
+
+
+FIX #1: RENAME FUNCTION
+  BEFORE: compute_entity_category_preferences()
+  AFTER:  compute_category_preferences()
+  REASON: Entity is implicit (we compute statistics per entity for each category)
+          Naming should be: [ACTION] + [READABLES] + [METRIC]
+          NOT:             [ACTION] + [INTELLIGENCE] + [READABLES] + [METRIC]
+
+FIX #2: STANDARDIZE PARAMETER NAMING
+  ALL CATEGORICAL FUNCTIONS should use "identifier_col" (not "id_col")
+   encode_categorical_flags(..., identifier_col, ...)
+   count_categories(..., identifier_col, ...)
+   extract_primary_category(..., identifier_col, ...)
+   compute_category_combinations(..., identifier_col, ...)
+   REASON: Consistency with Intelligence (unique identifier) concept
+
+
