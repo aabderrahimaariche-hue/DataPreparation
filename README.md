@@ -1,17 +1,17 @@
-# DataPreparation
+﻿# DataPreparation
 
 A comprehensive, modular R package for data preparation and feature engineering. This package provides 50+ general-purpose functions organized into 7 logical modules, enabling reuse across different projects and datasets.
 
-## ✨ Features
+## âœ¨ Features
 
-### 📦 Module 1: NA Handling
+### ðŸ“¦ Module 1: NA Handling
 Functions for managing missing values:
 - `remove_na_columns()` - Remove rows with NA in specified columns
 - `impute_na_numeric()` - Impute NA with median values
 - `flag_na_column()` - Create binary NA indicator flags
 - `summarize_na_rows()` - Generate NA statistics summaries
 
-### 🔢 Module 2: Numeric Features
+### ðŸ”¢ Module 2: Numeric Features
 Comprehensive numeric feature engineering with 30+ functions:
 - **Scaling**: `scale_betweenRange()`, `scale_unbounded()`
 - **Transformations**: `transform_log()`, `transform_sqrt()`, `transform_exp()`
@@ -22,43 +22,43 @@ Comprehensive numeric feature engineering with 30+ functions:
 - **Statistics**: `compute_rolling_statistics()`, `compute_group_statistics()`
 - **Advanced**: `create_quantile_features()`, `create_rank_features()`, `create_percentage_change()`
 
-### ⏰ Module 3: Timestamp Features
+### â° Module 3: Timestamp Features
 Extract temporal patterns:
 - `extract_timestamp_features()` - Extract year/month/day/weekday from timestamps
 - `extract_year_from_string()` - Extract 4-digit year from strings
 
-### 📝 Module 4: String Features
+### ðŸ“ Module 4: String Features
 String processing and feature validation:
 - `validate_ngram()` - Validate n-gram extraction
 - `generate_numeric_variants()` - Create numeric feature transformation candidates
 - `generate_categorical_variants()` - Generate categorical encoding variants
 
-### 🔤 Module 5: N-gram Generation
+### ðŸ”¤ Module 5: N-gram Generation
 Advanced text feature extraction:
 - `generate_ngram_char_variants()` - Character-level n-grams (4 methods)
 - `generate_ngram_word_variants()` - Word-level n-grams
 
-### 📍 Module 6: Position Extraction
+### ðŸ“ Module 6: Position Extraction
 Extract position-specific patterns:
 - `extract_prefix_patterns()` - Extract first n-grams
 - `extract_infix_patterns()` - Extract middle n-grams
 - `extract_suffix_patterns()` - Extract last n-grams
 
-### 🎯 Module 7: Linguistic Analysis
+### ðŸŽ¯ Module 7: Linguistic Analysis
 Advanced linguistic feature extraction:
 - `extract_string_linguistic_profile()` - Extract linguistic features
 - `compute_global_linguistic_effects()` - Compute feature effects on target variable
 - `compute_user_linguistic_preferences()` - Extract user-specific preferences
 - `compute_position_importance()` - Rank position importance
 
-### 🔍 Module 8: Dataset Inspection
+### ðŸ” Module 8: Dataset Inspection
 Inspect and validate datasets before processing:
 - `inspect_dataset()` - Get comprehensive dataset overview
 - `validate_for_processing()` - Check if data is suitable for functions
 - `preview_dataset()` - Display formatted data preview
 - `check_memory_usage()` - Monitor memory usage of datasets
 
-### 🤖 Module 9: Automatic Workflow Generator
+### ðŸ¤– Module 9: Automatic Workflow Generator
 Generate complete analysis workflows without manual coding:
 - `detect_datasets()` - Automatically find all datasets in memory
 - `show_dataset_columns()` - Display column names and types
@@ -66,13 +66,13 @@ Generate complete analysis workflows without manual coding:
 - `generate_workflow_script()` - Auto-generate complete R workflow code
 
 **Key Benefit**: No more hardcoding column names! The generator:
-✅ Detects datasets and columns automatically
-✅ Shows interactive menus for selection
-✅ Generates complete, ready-to-run workflow scripts
-✅ Works with ANY dataset (movies, cancer data, products, custom data)
-✅ Saves timestamped script files for reproducibility
+âœ… Detects datasets and columns automatically
+âœ… Shows interactive menus for selection
+âœ… Generates complete, ready-to-run workflow scripts
+âœ… Works with ANY dataset (movies, cancer data, products, custom data)
+âœ… Saves timestamped script files for reproducibility
 
-## 📦 Installation
+## ðŸ“¦ Installation
 
 ### Install from GitHub:
 ```r
@@ -88,7 +88,7 @@ devtools::install_github("aabderrahimaariche-hue/DataPreparation")
 library(DataPreparation)
 ```
 
-## 🚀 Quick Start
+## ðŸš€ Quick Start
 
 ### Example 0: Automatic Workflow Generation (NEW!)
 ```r
@@ -195,7 +195,7 @@ effects <- compute_global_linguistic_effects(
 head(effects$global_effects)
 ```
 
-## 📚 Documentation
+## ðŸ“š Documentation
 
 Each function includes detailed documentation. Access it in R:
 ```r
@@ -203,7 +203,7 @@ Each function includes detailed documentation. Access it in R:
 help(package = "DataPreparation")       # View package overview
 ```
 
-## 📋 Dependencies
+## ðŸ“‹ Dependencies
 
 - **dplyr** - Data manipulation
 - **tidyr** - Data reshaping
@@ -213,7 +213,7 @@ help(package = "DataPreparation")       # View package overview
 - **rlang** - Meta-programming
 - **tibble** - Modern data frames
 
-## 🎯 Design Philosophy
+## ðŸŽ¯ Design Philosophy
 
 - **Modular**: Functions organized into 7 logical modules for easy navigation
 - **Reusable**: General-purpose functions work across different datasets
@@ -221,15 +221,15 @@ help(package = "DataPreparation")       # View package overview
 - **Consistent API**: Predictable function names and parameter conventions
 - **Dynamic**: Linguistic analysis functions discover patterns automatically
 
-## 📄 License
+## ðŸ“„ License
 
 MIT License - See LICENSE file for details
 
-## 👤 Author
+## ðŸ‘¤ Author
 
 AARICHE ABDERRAHIM
 
-## 📖 Citation
+## ðŸ“– Citation
 
 If you use this package in your research, please cite:
 
@@ -242,10 +242,39 @@ If you use this package in your research, please cite:
 }
 ```
 
-## 🤝 Contributing
+## ðŸ¤ Contributing
 
 Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
-## 📞 Support
+## ðŸ“ž Support
 
 For issues, questions, or suggestions, please open an issue on [GitHub](https://github.com/aabderrahimaariche-hue/DataPreparation/issues).
+## Memory Management Module (v1.1.0)
+
+Optimize RAM usage when working with large datasets. Particularly useful for machine learning workflows with big data.
+
+### Functions
+
+- **get_dataset_size()** - Check memory usage of datasets
+- **drop_dataset()** - Remove single dataset and free memory
+- **drop_datasets()** - Remove multiple datasets at once
+- **drop_if_exists()** - Safe removal (no error if missing)
+- **drop_by_pattern()** - Remove datasets matching regex pattern
+- **get_memory_summary()** - View all memory usage in formatted table
+- **workflow_extract_drop()** - Automated load  extract  drop pattern
+
+### Quick Start
+
+@"
+# Check which datasets use the most RAM
+summary <- get_memory_summary()
+
+# Remove a large dataset
+drop_dataset('raw_data')
+
+# Clean up temporary data
+drop_if_exists(c('temp1', 'temp2', 'temp3'))
+@
+
+See [NEWS.md](NEWS.md) for version 1.1.0 details.
+
