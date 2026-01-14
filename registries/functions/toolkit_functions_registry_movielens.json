@@ -5,6 +5,13 @@
   "current_implementation": "All functions validated with MovieLens 10M dataset",
   "description": "10 universal functions currently implemented and tested with MovieLens dataset. These same functions work universally across 100+ domains by changing only 4 parameters.",
   
+  "documentation": {
+    "⭐ PRIMARY REFERENCE": "See documentation/project-status/NEW_UNIVERSAL_MODULES_SUMMARY.md - The foundational guide for all universal data science operations",
+    "⭐ INTELLIGENCE EXTRACTION GUIDE": "See documentation/project-status/NATURAL_TO_ARTIFICIAL_INTELLIGENCE_GUIDE.md - Complete framework for extracting human intelligence into AI systems using MovieLens",
+    "⭐ CROSS-DOMAIN EXAMPLES": "See documentation/project-status/CROSS_DOMAIN_INTELLIGENCE_EXAMPLES.md - How same intelligence framework works across Movies, Food, Healthcare, E-commerce, Agriculture, and 100+ domains",
+    "key_concept": "Intelligence = WHO (userId, customerId, patientId...) | Readables = WHAT they observe (genres, categories, symptoms...) | Writables = HOW they decide (rating, price, outcome...)"
+  },
+  
   "dataset_info": {
     "name": "MovieLens 10M Dataset",
     "source": "https://grouplens.org/datasets/movielens/10m/",
