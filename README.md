@@ -257,7 +257,7 @@ help(package = "DataPreparation")       # View package overview
 - **Consistent API**: Predictable function names and parameter conventions
 - **Dynamic**: Linguistic analysis functions discover patterns automatically
 
-## 🪪„ License
+## 🪪 License
 
 MIT License - See LICENSE file for details
 
