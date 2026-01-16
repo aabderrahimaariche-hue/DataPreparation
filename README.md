@@ -2,16 +2,16 @@
 
 A comprehensive, modular R package for data preparation and feature engineering. This package provides 50+ general-purpose functions organized into 7 logical modules, enabling reuse across different projects and datasets.
 
-## âœ¨ Features
+## ✨ Features
 
-### ðŸ“¦ Module 1: NA Handling
+### 📦¦ Module 1: NA Handling
 Functions for managing missing values:
 - `remove_na_columns()` - Remove rows with NA in specified columns
 - `impute_na_numeric()` - Impute NA with median values
 - `flag_na_column()` - Create binary NA indicator flags
 - `summarize_na_rows()` - Generate NA statistics summaries
 
-### ðŸ”¢ Module 2: Numeric Features
+### 🔢 Module 2: Numeric Features
 Comprehensive numeric feature engineering with 30+ functions:
 - **Scaling**: `scale_betweenRange()`, `scale_unbounded()`
 - **Transformations**: `transform_log()`, `transform_sqrt()`, `transform_exp()`
@@ -22,43 +22,43 @@ Comprehensive numeric feature engineering with 30+ functions:
 - **Statistics**: `compute_rolling_statistics()`, `compute_group_statistics()`
 - **Advanced**: `create_quantile_features()`, `create_rank_features()`, `create_percentage_change()`
 
-### â° Module 3: Timestamp Features
+### ⏰ Module 3: Timestamp Features
 Extract temporal patterns:
 - `extract_timestamp_features()` - Extract year/month/day/weekday from timestamps
 - `extract_year_from_string()` - Extract 4-digit year from strings
 
-### ðŸ“ Module 4: String Features
+### 📝 Module 4: String Features
 String processing and feature validation:
 - `validate_ngram()` - Validate n-gram extraction
 - `generate_numeric_variants()` - Create numeric feature transformation candidates
 - `generate_categorical_variants()` - Generate categorical encoding variants
 
-### ðŸ”¤ Module 5: N-gram Generation
+### 🔤 Module 5: N-gram Generation
 Advanced text feature extraction:
 - `generate_ngram_char_variants()` - Character-level n-grams (4 methods)
 - `generate_ngram_word_variants()` - Word-level n-grams
 
-### ðŸ“ Module 6: Position Extraction
+### 📍 Module 6: Position Extraction
 Extract position-specific patterns:
 - `extract_prefix_patterns()` - Extract first n-grams
 - `extract_infix_patterns()` - Extract middle n-grams
 - `extract_suffix_patterns()` - Extract last n-grams
 
-### ðŸŽ¯ Module 7: Linguistic Analysis
+### 🎯 Module 7: Linguistic Analysis
 Advanced linguistic feature extraction:
 - `extract_string_linguistic_profile()` - Extract linguistic features
 - `compute_global_linguistic_effects()` - Compute feature effects on target variable
 - `compute_user_linguistic_preferences()` - Extract user-specific preferences
 - `compute_position_importance()` - Rank position importance
 
-### ðŸ” Module 8: Dataset Inspection
+### 📊 Module 8: Dataset Inspection
 Inspect and validate datasets before processing:
 - `inspect_dataset()` - Get comprehensive dataset overview
 - `validate_for_processing()` - Check if data is suitable for functions
 - `preview_dataset()` - Display formatted data preview
 - `check_memory_usage()` - Monitor memory usage of datasets
 
-### ðŸ¤– Module 9: Automatic Workflow Generator
+### ⚙️– Module 9: Automatic Workflow Generator
 Generate complete analysis workflows without manual coding:
 - `detect_datasets()` - Automatically find all datasets in memory
 - `show_dataset_columns()` - Display column names and types
@@ -72,7 +72,7 @@ Generate complete analysis workflows without manual coding:
 âœ… Works with ANY dataset (movies, cancer data, products, custom data)
 âœ… Saves timestamped script files for reproducibility
 
-## ðŸ“¦ Installation
+## 📦¦ Installation
 
 ### Install from GitHub:
 ```r
@@ -83,12 +83,12 @@ install.packages("devtools")
 devtools::install_github("aabderrahimaariche-hue/DataPreparation")
 ```
 
-### Load the package:
+### 🔃Load the package:
 ```r
 library(DataPreparation)
 ```
 
-## ðŸš€ Quick Start
+## ▶️ Quick Start
 
 ### Example 0: Automatic Workflow Generation (NEW!)
 ```r
@@ -195,7 +195,7 @@ effects <- compute_global_linguistic_effects(
 head(effects$global_effects)
 ```
 
-## ðŸ“š Documentation
+## 📄 Documentation
 
 Each function includes detailed documentation. Access it in R:
 ```r
@@ -203,7 +203,7 @@ Each function includes detailed documentation. Access it in R:
 help(package = "DataPreparation")       # View package overview
 ```
 
-## ðŸ“‹ Dependencies
+## 🖇️ Dependencies
 
 - **dplyr** - Data manipulation
 - **tidyr** - Data reshaping
@@ -221,15 +221,15 @@ help(package = "DataPreparation")       # View package overview
 - **Consistent API**: Predictable function names and parameter conventions
 - **Dynamic**: Linguistic analysis functions discover patterns automatically
 
-## ðŸ“„ License
+## 🪪„ License
 
 MIT License - See LICENSE file for details
 
-## ðŸ‘¤ Author
+## 🥮 Author
 
 AARICHE ABDERRAHIM
 
-## ðŸ“– Citation
+## 👮– Citation
 
 If you use this package in your research, please cite:
 
@@ -242,11 +242,11 @@ If you use this package in your research, please cite:
 }
 ```
 
-## ðŸ¤ Contributing
+## ⛓️ Contributing
 
 Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
-## ðŸ“ž Support
+## 💁‍♂️ Support
 
 For issues, questions, or suggestions, please open an issue on [GitHub](https://github.com/aabderrahimaariche-hue/DataPreparation/issues).
 ## Memory Management Module (v1.1.0)
