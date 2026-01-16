@@ -65,13 +65,13 @@ CATEGORICAL INTELLIGENCE FUNCTIONS (Module 11)
        Tag stats:      compute_category_statistics(data, "tags", "price", ",")
        Diagnosis:      compute_category_statistics(data, "diagnoses", "outcome", ";")
 
-8. compute_entity_category_preferences(data, id_col, cat_col, value_col, delimiter)
+8. compute_category_preferences(data, id_col, cat_col, value_col, delimiter)
     Each ENTITY's preferences for each CATEGORY
     Preference = entity_mean - global_mean
     Output: Pivot format (wide) with entity + pref_* columns
     Examples:
-       User genres:    compute_entity_category_preferences(data, "userId", "genres", "rating", "\\|")
-       Cust products:  compute_entity_category_preferences(data, "customerId", "types", "purchase", ",")
+       User genres:    compute_category_preferences(data, "userId", "genres", "rating", "\\|")
+       Cust products:  compute_category_preferences(data, "customerId", "types", "purchase", ",")
 
 9. compute_category_diversity(data, categorical_col, delimiter)
     Classify categories: niche (rare) vs mainstream (common)
@@ -120,7 +120,7 @@ genre_flags <- encode_categorical_flags(data, "genres", "movieId", "\\|")
 genre_stats <- compute_category_statistics(data, "genres", "rating", "\\|")
 
 # 6. User Genre Preferences
-user_prefs <- compute_entity_category_preferences(data, "userId", "genres", "rating", "\\|")
+user_prefs <- compute_category_preferences(data, "userId", "genres", "rating", "\\|")
 
 # 7. Genre Diversity Analysis
 genre_diversity <- compute_category_diversity(data, "genres", "\\|")

@@ -72,7 +72,34 @@ Generate complete analysis workflows without manual coding:
 âœ… Works with ANY dataset (movies, cancer data, products, custom data)
 âœ… Saves timestamped script files for reproducibility
 
-## 📦¦ Installation
+## � Getting Started: Choose Your Learning Path
+
+**New to DataPreparation?** Check out our **Startup Cores** documentation:
+
+### 📁 [startup-cores/](startup-cores/) - Domain-Specific Implementation Guides
+
+We've created comprehensive startup guides for different industries:
+
+- **🏥 [Medical & Healthcare](startup-cores/domains/MEDICAL_SECTOR_STARTUP.md)** - Patient analysis, treatment outcomes, disease patterns
+- **🎬 [Entertainment & Cinema](startup-cores/domains/ENTERTAINMENT_SECTOR_STARTUP.md)** - Recommendation systems, audience analysis, content strategy
+- **🏗️ [Universal Framework](startup-cores/UNIVERSAL_INFRASTRUCTURE_PHILOSOPHY.md)** - Foundational concepts that apply to ALL domains
+
+Each domain guide includes:
+- ✅ Real-world examples tailored to your industry
+- ✅ Complete code snippets ready to use
+- ✅ Domain-specific patterns and best practices
+- ✅ Step-by-step implementation guide
+
+**Choose your path:**
+1. **Start with Theory**: [Universal Infrastructure Philosophy](startup-cores/UNIVERSAL_INFRASTRUCTURE_PHILOSOPHY.md)
+2. **Start with Your Industry**: [startup-cores/domains/](startup-cores/domains/)
+3. **Start with Practice**: [Professional Scalable Toolkit Guide](startup-cores/PROFESSIONAL_SCALABLE_TOOLKIT_GUIDE.md)
+
+See [startup-cores/README.md](startup-cores/README.md) for complete learning paths and navigation guide.
+
+---
+
+## �📦¦ Installation
 
 ### Install from GitHub:
 ```r

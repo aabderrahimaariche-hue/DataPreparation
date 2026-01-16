@@ -51,7 +51,7 @@ Functions for ANY categorical column + ANY delimiter + ANY identifier:
    - Replaces: movielens_genres_rating_stats()
    - Usage: Mean rating per genre, mean price per tag, mean outcome per diagnosis, etc.
 
-8. **compute_entity_category_preferences()**
+8. **compute_category_preferences()**
    - Calculates: preference deviation per entity-category pair
    - Replaces: movielens_user_genre_preferences()
    - Usage: User genre preferences, customer product preferences, patient symptom preferences, etc.
