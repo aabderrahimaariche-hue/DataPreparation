@@ -249,7 +249,7 @@ help(package = "DataPreparation")       # View package overview
 - **rlang** - Meta-programming
 - **tibble** - Modern data frames
 
-## ðŸŽ¯ Design Philosophy
+## 🎨¯ Design Philosophy
 
 - **Modular**: Functions organized into 7 logical modules for easy navigation
 - **Reusable**: General-purpose functions work across different datasets
