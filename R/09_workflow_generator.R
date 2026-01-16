@@ -5,6 +5,13 @@
 #          available datasets and columns in memory
 #########################################################
 
+#' String Concatenation Operator
+#'
+#' @export
+`%+%` <- function(x, y) {
+  paste0(x, y)
+}
+
 #' Detect All Data Frames in Global Environment
 #'
 #' Scans the global environment for all data frames and returns
@@ -85,7 +92,7 @@ show_dataset_columns <- function(dataset_name, envir = .GlobalEnv) {
   data <- get(dataset_name, envir = envir)
   
   col_info <- data.frame(
-    Index = 1:ncol(data),
+    Index = seq_len(ncol(data)),
     Column = colnames(data),
     Type = sapply(data, class),
     Non_Null = sapply(data, function(x) sum(!is.na(x))),
@@ -138,7 +145,7 @@ generate_workflow_interactive <- function(envir = .GlobalEnv, auto_mode = FALSE)
   
   # Step 2: Select dataset
   cat("STEP 2: Select a dataset to analyze\n\n")
-  for (i in 1:nrow(datasets_info)) {
+  for (i in seq_len(nrow(datasets_info))) {
     cat(sprintf("  [%d] %s (%d rows, %d columns)\n", 
                 i, datasets_info$Dataset[i], datasets_info$Rows[i], datasets_info$Columns[i]))
   }
@@ -172,7 +179,7 @@ generate_workflow_interactive <- function(envir = .GlobalEnv, auto_mode = FALSE)
     cat("   (Text analysis requires string columns)\n\n")
     string_col <- NULL
   } else {
-    for (i in 1:length(string_cols)) {
+    for (i in seq_along(string_cols)) {
       cat(sprintf("  [%d] %s\n", i, string_cols[i]))
     }
     cat("\n")
@@ -203,7 +210,7 @@ generate_workflow_interactive <- function(envir = .GlobalEnv, auto_mode = FALSE)
     cat("❌ No numeric columns found in this dataset.\n\n")
     numeric_col <- NULL
   } else {
-    for (i in 1:length(numeric_cols)) {
+    for (i in seq_along(numeric_cols)) {
       cat(sprintf("  [%d] %s\n", i, numeric_cols[i]))
     }
     cat("\n")
@@ -229,7 +236,7 @@ generate_workflow_interactive <- function(envir = .GlobalEnv, auto_mode = FALSE)
   cat("STEP 6: Select ID column (unique identifier per row)\n")
   cat("(For grouping, position extraction, linguistic analysis, etc.)\n\n")
   
-  for (i in 1:nrow(col_info)) {
+  for (i in seq_len(nrow(col_info))) {
     cat(sprintf("  [%d] %s\n", i, col_info$Column[i]))
   }
   cat("\n")
