@@ -74,7 +74,7 @@ Generate complete analysis workflows without manual coding:
 
 ## � Getting Started: Choose Your Learning Path
 
-**New to DataPreparation?** Check out our **Startup Cores** documentation:
+**New to DataPreparation?** Explore our **Startup Cores** documentation:
 
 ### 📁 [startup-cores/](startup-cores/) - Domain-Specific Implementation Guides
 
@@ -82,6 +82,7 @@ We've created comprehensive startup guides for different industries:
 
 - **🏥 [Medical & Healthcare](startup-cores/sectors/medical/README.md)** - Patient analysis, treatment outcomes, disease patterns ([full guide](startup-cores/sectors/medical/STARTUP_GUIDE.md))
 - **🎬 [Entertainment & Cinema](startup-cores/sectors/entertainment/README.md)** - Recommendation systems, audience analysis, content strategy ([full guide](startup-cores/sectors/entertainment/STARTUP_GUIDE.md))
+- **💼 [Business & Finance](startup-cores/sectors/business-finance/README.md)** - Customer segmentation, financial analysis, risk management ([full guide](startup-cores/sectors/business-finance/STARTUP_GUIDE.md))
 - **🤖 [Artificial Intelligence & ML](startup-cores/sectors/artificial-intelligence/README.md)** - Feature engineering, ML pipelines, intelligence extraction ([full guide](startup-cores/sectors/artificial-intelligence/STARTUP_GUIDE.md))
 - **🏗️ [Universal Framework](startup-cores/core-foundation/UNIVERSAL_INFRASTRUCTURE_PHILOSOPHY.md)** - Foundational concepts that apply to ALL domains
 
@@ -98,7 +99,7 @@ Each domain guide includes:
 - [PHILOSOPHY_MEETS_SCIENCE.md](startup-cores/core-foundation/PHILOSOPHY_MEETS_SCIENCE.md) - Theory to implementation
 - [PROFESSIONAL_SCALABLE_TOOLKIT_GUIDE.md](startup-cores/core-foundation/PROFESSIONAL_SCALABLE_TOOLKIT_GUIDE.md) - All 67 functions reference
 
-**Choose your starting point:**
+**Choose a starting point:**
 1. **By Industry**: Medical | Entertainment | AI/ML (links above)
 2. **By Experience**: Beginner → [Your sector] | Experienced → [Core foundation] | Executive → [Philosophy + Sector]
 3. **By Time**: Quick start (5 min) | Full guide (2 hrs) | Deep dive (8+ hrs)
@@ -157,7 +158,7 @@ See [WORKFLOW_GENERATOR_GUIDE.md](WORKFLOW_GENERATOR_GUIDE.md) for more details 
 
 ### Example 1: Inspect Your Dataset First
 ```r
-# Before processing, understand your data
+# Before processing, understand the data
 library(DataPreparation)
 
 movies <- data.frame(
@@ -291,10 +292,14 @@ For issues, questions, or suggestions, please open an issue on [GitHub](https://
 
 ### 🚀 Getting Started (START HERE)
 - **[startup-cores/README.md](startup-cores/README.md)** - Navigation hub for all learning paths
-- **Sector Guides** (choose one):
-  - [Medical & Healthcare](startup-cores/sectors/medical/README.md) → [Full Guide](startup-cores/sectors/medical/STARTUP_GUIDE.md)
-  - [Entertainment & Cinema](startup-cores/sectors/entertainment/README.md) → [Full Guide](startup-cores/sectors/entertainment/STARTUP_GUIDE.md)
-  - [AI & Machine Learning](startup-cores/sectors/artificial-intelligence/README.md) → [Full Guide](startup-cores/sectors/artificial-intelligence/STARTUP_GUIDE.md)
+- **[Medical Sector README](startup-cores/sectors/medical/README.md)** - 15 min overview
+- **[Medical Sector STARTUP_GUIDE](startup-cores/sectors/medical/STARTUP_GUIDE.md)** - 2 hours implementation
+- **[Entertainment Sector README](startup-cores/sectors/entertainment/README.md)** - 15 min overview
+- **[Entertainment Sector STARTUP_GUIDE](startup-cores/sectors/entertainment/STARTUP_GUIDE.md)** - 2 hours implementation
+- **[Business & Finance README](startup-cores/sectors/business-finance/README.md)** - 15 min overview
+- **[Business & Finance STARTUP_GUIDE](startup-cores/sectors/business-finance/STARTUP_GUIDE.md)** - 2-3 hours implementation
+- **[AI/ML Sector README](startup-cores/sectors/artificial-intelligence/README.md)** - 15 min overview
+- **[AI/ML Sector STARTUP_GUIDE](startup-cores/sectors/artificial-intelligence/STARTUP_GUIDE.md)** - 3 hours implementation
 
 ### 📖 Core Theory & Reference
 - **[core-foundation/UNIVERSAL_INFRASTRUCTURE_PHILOSOPHY.md](startup-cores/core-foundation/UNIVERSAL_INFRASTRUCTURE_PHILOSOPHY.md)** - Why universal patterns work across domains
@@ -320,7 +325,10 @@ For issues, questions, or suggestions, please open an issue on [GitHub](https://
 1. [Medical Sector README](startup-cores/sectors/medical/README.md) - 15 min overview
 2. [Medical STARTUP_GUIDE](startup-cores/sectors/medical/STARTUP_GUIDE.md) - 2 hrs comprehensive guide
 3. [PROFESSIONAL_SCALABLE_TOOLKIT_GUIDE](startup-cores/core-foundation/PROFESSIONAL_SCALABLE_TOOLKIT_GUIDE.md) - Function reference
-
+**Business & Finance Professionals**
+1. [Business & Finance README](startup-cores/sectors/business-finance/README.md) - 15 min overview
+2. [Business & Finance STARTUP_GUIDE](startup-cores/sectors/business-finance/STARTUP_GUIDE.md) - 2-3 hrs comprehensive
+3. [PROFESSIONAL_SCALABLE_TOOLKIT_GUIDE](startup-cores/core-foundation/PROFESSIONAL_SCALABLE_TOOLKIT_GUIDE.md) - Function reference
 **ML Engineers**
 1. [AI/ML Sector README](startup-cores/sectors/artificial-intelligence/README.md) - 15 min overview
 2. [AI/ML STARTUP_GUIDE](startup-cores/sectors/artificial-intelligence/STARTUP_GUIDE.md) - Complete ML integration

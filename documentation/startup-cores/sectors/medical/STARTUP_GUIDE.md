@@ -248,12 +248,12 @@ recovery_trajectory <- compute_rolling_statistics(
 
 ## Getting Started {#getting-started}
 
-### Step 1: Understand Your Data Structure
+### Step 1: Data Structure Understanding
 
-Map your medical data to the universal framework:
+Medical data should be mapped to the universal framework:
 
 ```
-Your Medical Data          →  Universal Framework
+Medical Data            →  Universal Framework
 ─────────────────────────     ──────────────────
 Patient/Doctor/Hospital IDs   =  Intelligence
 Symptoms/Diagnoses/Treatments =  Readables  
@@ -263,13 +263,13 @@ Outcomes/Scores/Measurements   =  Writables
 ### Step 2: Start with Patient Statistics
 
 ```r
-# Your first analysis should answer: 
+# Initial analysis should address: 
 # "What is typical for each patient/doctor/hospital?"
 
 stats <- compute_identifier_statistics(
-  data = your_medical_data,
-  identifier_col = "your_id_column",
-  value_col = "your_outcome_metric"
+  data = medical_data,
+  identifier_col = "patient_id",
+  value_col = "outcome_metric"
 )
 ```
 
@@ -279,9 +279,9 @@ stats <- compute_identifier_statistics(
 # Next: "What patterns exist in symptoms/diagnoses?"
 
 patterns <- compute_category_statistics(
-  data = your_medical_data,
-  categorical_col = "your_symptom_column",
-  value_col = "your_outcome_metric",
+  data = medical_data,
+  categorical_col = "symptom_column",
+  value_col = "outcome_metric",
   delimiter = "|"  # or "," or ";"
 )
 ```
@@ -292,7 +292,7 @@ patterns <- compute_category_statistics(
 # Then: "Who deviates from the norm?"
 
 deviations <- compute_identifier_deviation(
-  data = your_medical_data,
+  data = medical_data,
   identifier_col = "patient_id",
   value_col = "recovery_score",
   reference_col = "expected_recovery_score"
@@ -321,7 +321,7 @@ deviations <- compute_identifier_deviation(
 1. **Read**: [UNIVERSAL_INFRASTRUCTURE_PHILOSOPHY.md](../UNIVERSAL_INFRASTRUCTURE_PHILOSOPHY.md) to understand the core framework
 2. **Learn**: [PROFESSIONAL_SCALABLE_TOOLKIT_GUIDE.md](../PROFESSIONAL_SCALABLE_TOOLKIT_GUIDE.md) for detailed function reference
 3. **Code**: Check guides folder for complete workflow examples
-4. **Apply**: Start with your own patient data using the examples above
+4. **Apply**: Start with patient data using the examples above
 
 ---
 
@@ -329,5 +329,5 @@ deviations <- compute_identifier_deviation(
 
 - **Patient Outcome Analysis**: See WORKFLOW_GENERATOR_GUIDE.md in guides folder
 - **Data Quality**: Check DATA_TABLE_SUPPORT.md for handling missing patient data
-- **Statistical Validation**: Review REUSABILITY_METRICS.md for metrics on your analysis
+- **Statistical Validation**: Review REUSABILITY_METRICS.md for analysis metrics
 

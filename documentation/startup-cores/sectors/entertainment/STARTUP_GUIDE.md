@@ -357,7 +357,7 @@ genre_trends <- compute_rolling_statistics(
 
 ### Step 1: Understand Your Data Structure
 
-Map your entertainment data to the universal framework:
+Map entertainment data to the universal framework:
 
 ```
 Your Entertainment Data    →  Universal Framework
@@ -441,7 +441,7 @@ preferences <- compute_category_preferences(
 1. **Read**: [UNIVERSAL_INFRASTRUCTURE_PHILOSOPHY.md](../UNIVERSAL_INFRASTRUCTURE_PHILOSOPHY.md) to understand why this framework works
 2. **Learn**: [PROFESSIONAL_SCALABLE_TOOLKIT_GUIDE.md](../PROFESSIONAL_SCALABLE_TOOLKIT_GUIDE.md) for detailed function reference
 3. **Code**: Check NATURAL_TO_ARTIFICIAL_INTELLIGENCE_GUIDE.md for recommendation system walkthrough
-4. **Apply**: Start with MovieLens or your own film data using the examples above
+4. **Apply**: Start with MovieLens or organizational film data using the examples above
 
 ---
 

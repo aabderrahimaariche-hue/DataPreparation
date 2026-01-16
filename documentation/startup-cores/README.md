@@ -1,6 +1,6 @@
 # 🚀 Startup Cores: Getting Started with DataPreparation
 
-**Purpose**: Choose your industry/sector and learn how to use DataPreparation for your specific needs.
+**Purpose**: Select an industry/sector to learn how to use DataPreparation for specific domain needs.
 
 ---
 
@@ -24,8 +24,10 @@ startup-cores/
         ├── 🎬 entertainment/        (Film & Entertainment)
         │   ├── README.md            (Sector overview)
         │   └── STARTUP_GUIDE.md     (Complete implementation)
-        │
-        └── 🤖 artificial-intelligence/  (AI/ML Engineering)
+        │        ├── 💼 business-finance/     (Business & Finance)
+        │   ├── README.md            (Sector overview)
+        │   └── STARTUP_GUIDE.md     (Complete implementation)
+        │        └── 🤖 artificial-intelligence/  (AI/ML Engineering)
             ├── README.md            (Sector overview)
             └── STARTUP_GUIDE.md     (Complete implementation)
 ```
@@ -75,6 +77,27 @@ startup-cores/
 
 ---
 
+### 💼 Business & Finance
+**For**: CFOs, financial analysts, business intelligence teams, accountants, marketing professionals
+
+**Covers**:
+- Customer segmentation and profiling
+- Transaction pattern analysis
+- Financial performance comparison
+- Risk assessment and anomaly detection
+- Profitability analysis by dimension
+- Churn prediction and retention modeling
+
+**Start Here**: [sectors/business-finance/README.md](sectors/business-finance/README.md)
+
+**Key Questions This Answers**:
+- Who are our most valuable customers?
+- What products do customers prefer to buy together?
+- Which accounts show unusual activity?
+- How do different business units compare in profitability?
+
+---
+
 ### 🤖 Artificial Intelligence & Machine Learning
 **For**: ML engineers, AI researchers, data scientists, algorithm architects
 
@@ -118,27 +141,33 @@ All sectors are built on these universal concepts:
 
 ## 🚦 Quick Navigation
 
-### "I Want to Get Started Immediately"
-1. Choose your sector above
-2. Go to `sectors/[your-sector]/README.md`
+### "I want to get started immediately"
+1. Select a sector above (Medical | Entertainment | Business & Finance | AI/ML)
+2. Go to `sectors/[sector]/README.md`
 3. Follow the "Quick Start" section (5 minutes)
-4. Run the example code with your own data
+4. Run the example code with organizational data
 
 ### "I Want to Understand the Theory First"
 1. Read [core-foundation/UNIVERSAL_INFRASTRUCTURE_PHILOSOPHY.md](core-foundation/UNIVERSAL_INFRASTRUCTURE_PHILOSOPHY.md) (30 min)
 2. Read [core-foundation/PHILOSOPHY_MEETS_SCIENCE.md](core-foundation/PHILOSOPHY_MEETS_SCIENCE.md) (20 min)
-3. Choose your sector and read STARTUP_GUIDE.md
+3. Select a sector and read STARTUP_GUIDE.md
 
-### "I'm Building a Machine Learning Model"
+### "I'm building a machine learning model"
 1. Go to [sectors/artificial-intelligence/README.md](sectors/artificial-intelligence/README.md)
 2. Read the "Natural to Artificial Intelligence Pipeline"
-3. Follow code examples to build your feature set
-4. Integrate with your ML framework
+3. Follow code examples to build feature sets
+4. Integrate with ML frameworks
+
+### "I want business intelligence from my company data"
+1. Go to [sectors/business-finance/README.md](sectors/business-finance/README.md)
+2. Read "Quick Start" section (5 minutes)
+3. Run customer profiling examples with data
+4. See STARTUP_GUIDE for comprehensive analysis examples
 
 ### "I'm Evaluating DataPreparation for My Organization"
 1. Read [core-foundation/UNIVERSAL_INFRASTRUCTURE_PHILOSOPHY.md](core-foundation/UNIVERSAL_INFRASTRUCTURE_PHILOSOPHY.md) (business case)
 2. Read [core-foundation/PROFESSIONAL_SCALABLE_TOOLKIT_GUIDE.md](core-foundation/PROFESSIONAL_SCALABLE_TOOLKIT_GUIDE.md) (capabilities)
-3. Check your sector's STARTUP_GUIDE.md (real examples)
+3. Check the sector's STARTUP_GUIDE.md (real examples)
 
 ---
 
@@ -146,13 +175,13 @@ All sectors are built on these universal concepts:
 
 ### Data Scientists
 ```
-START: Your sector's STARTUP_GUIDE.md (1 hr)
+START: Relevant sector's STARTUP_GUIDE.md (1 hr)
          ↓
 READ:  core-foundation/PROFESSIONAL_SCALABLE_TOOLKIT_GUIDE.md (30 min)
          ↓
 DEEP:  core-foundation/UNIVERSAL_INFRASTRUCTURE_PHILOSOPHY.md (30 min)
          ↓
-CODE:  Run examples with your own data
+CODE:  Run examples with organizational data
 ```
 
 ### ML Engineers
@@ -165,7 +194,7 @@ STUDY: core-foundation/PHILOSOPHY_MEETS_SCIENCE.md (20 min)
          ↓
 REFERENCE: core-foundation/PROFESSIONAL_SCALABLE_TOOLKIT_GUIDE.md
          ↓
-IMPLEMENT: Integrate into your ML pipeline
+IMPLEMENT: Integrate into ML pipelines
 ```
 
 ### Researchers
@@ -174,7 +203,7 @@ START: core-foundation/UNIVERSAL_INFRASTRUCTURE_PHILOSOPHY.md (30 min)
          ↓
 THEORY: core-foundation/PHILOSOPHY_MEETS_SCIENCE.md (20 min)
          ↓
-PRACTICE: Your sector's STARTUP_GUIDE.md (2 hrs)
+PRACTICE: Relevant sector's STARTUP_GUIDE.md (2 hrs)
          ↓
 BENCHMARK: Performance metrics and comparisons
 ```
@@ -284,37 +313,40 @@ SAME FUNCTIONS, DIFFERENT DATA, DIFFERENT MODELS!
 ### Option 2: "I work in Entertainment/Film"
 👉 Go to [sectors/entertainment/README.md](sectors/entertainment/README.md)
 
-### Option 3: "I'm an AI/ML Engineer"
+### Option 3: "I work in Business/Finance"
+👉 Go to [sectors/business-finance/README.md](sectors/business-finance/README.md)
+
+### Option 4: "I'm an AI/ML Engineer"
 👉 Go to [sectors/artificial-intelligence/README.md](sectors/artificial-intelligence/README.md)
 
-### Option 4: "I want to understand the theory first"
+### Option 5: "I want to understand the theory first"
 👉 Go to [core-foundation/UNIVERSAL_INFRASTRUCTURE_PHILOSOPHY.md](core-foundation/UNIVERSAL_INFRASTRUCTURE_PHILOSOPHY.md)
 
 ---
 
 ## 📊 Sector Comparison
 
-| Feature | Medical | Entertainment | AI/ML |
-|---------|---------|---|---|
-| **Focus** | Healthcare applications | Recommendation systems | Feature engineering |
-| **Best For** | Clinical analysis | Streaming platforms | ML engineers |
-| **Time to Learn** | 2 hours | 2 hours | 3 hours |
-| **Code Complexity** | Beginner | Beginner | Intermediate |
-| **Theory Needed** | Optional | Optional | Recommended |
-| **Real-World Dataset** | Cancer data | MovieLens | Multiple domains |
+| Feature | Medical | Entertainment | Business & Finance | AI/ML |
+|---------|---------|---|---|---|
+| **Focus** | Healthcare applications | Recommendation systems | Business intelligence | Feature engineering |
+| **Best For** | Clinical analysis | Streaming platforms | CFOs & analysts | ML engineers |
+| **Time to Learn** | 2 hours | 2 hours | 2-3 hours | 3 hours |
+| **Code Complexity** | Beginner | Beginner | Beginner-Intermediate | Intermediate |
+| **Theory Needed** | Optional | Optional | Optional | Recommended |
+| **Real-World Dataset** | Cancer data | MovieLens | E-commerce/Finance | Multiple domains |
 
 ---
 
 ## 🎓 Success Criteria
 
-You'll know you've succeeded when you can:
+Practitioners will know they've succeeded when they can:
 
 - [ ] Explain Intelligence-Readables-Writables framework
-- [ ] Map your data to the universal structure
-- [ ] Run `compute_identifier_statistics()` on your data
+- [ ] Map data to the universal structure
+- [ ] Run `compute_identifier_statistics()` on data
 - [ ] Understand 5+ different DataPreparation functions
-- [ ] Build a complete workflow with your own data
-- [ ] Teach someone else from your sector how to use it
+- [ ] Build a complete workflow with organizational data
+- [ ] Teach peers from the same sector how to use it
 - [ ] Apply to a new domain without seeing examples
 
 ---

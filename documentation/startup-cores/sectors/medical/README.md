@@ -7,7 +7,7 @@
 ## 📖 Learning Path
 
 ### Step 1: Understand the Foundation (Optional but Recommended)
-Before diving into medical-specific examples, you may want to understand the universal framework:
+Before diving into medical-specific examples, practitioners may want to understand the universal framework:
 
 1. **[UNIVERSAL_INFRASTRUCTURE_PHILOSOPHY.md](../../core-foundation/UNIVERSAL_INFRASTRUCTURE_PHILOSOPHY.md)** (30 min)
    - Why universal data science patterns exist
@@ -36,13 +36,13 @@ Before diving into medical-specific examples, you may want to understand the uni
 
 ## 🎯 Quick Start (5 Minutes)
 
-### Your First Medical Analysis
+### Initial Medical Analysis
 
 ```r
 library(DataPreparation)
 
 # Load patient data
-patient_data <- read.csv("your_patient_data.csv")
+patient_data <- read.csv("patient_data.csv")
 # Columns: patient_id, symptoms, treatment_type, recovery_days
 
 # Step 1: Understand patient recovery patterns
@@ -65,14 +65,14 @@ symptom_combos <- compute_category_combinations(
 # Step 3: Predict outcomes
 # Use the statistics from steps 1-2 to build your prediction model
 
-print("Your first medical analysis is ready!")
+print("Initial medical analysis is ready!")
 ```
 
 ---
 
 ## 🏗️ Professional Framework
 
-The medical startup uses this universal structure:
+The medical sector uses this universal structure:
 
 ```
 MEDICAL DATA MAPPING:

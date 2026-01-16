@@ -77,7 +77,7 @@ Finance Problem = [AccountID] + [TransactionCategories] + [Amount]
 ## Scenario A: Without Universal Infrastructure
 
 ### The Setup
-You're a data scientist working with MovieLens data. You want to understand **how genres affect user ratings**.
+Data scientists working with MovieLens data often want to understand **how genres affect user ratings**.
 
 ### Traditional Approach (Domain-Specific)
 
@@ -188,9 +188,7 @@ When hired at a new company:
 ## Scenario B: With Universal Infrastructure
 
 ### The Setup
-Same: MovieLens data, understand **how genres affect user ratings**.
-
-But this time, you use **Universal Infrastructure Rules**.
+Data scientists using the same MovieLens data can understand **how genres affect user ratings** through a different approach.
 
 ### Universal Approach
 
@@ -285,14 +283,14 @@ transaction_preferences <- compute_category_preferences(
 After 5 years with Universal Infrastructure:
 - **47 models built** using **10 universal functions**
 - **0 functions rewritten** across domains
-- All code is **parameterized and reusable**
-- Your codebase grows in **intelligence**, not in **quantity**
+- All code remains **parameterized and reusable**
+- Codebases grow in **intelligence**, not in **quantity**
 
 When hired at a new company:
-- "Can you apply your previous experience?"
-- "Absolutely. I bring 10 battle-tested functions that work across 100+ domains."
-- You can immediately contribute on day 1
-- Your "experience" is transferable, reusable code
+- "Can practitioners apply previous experience?"
+- "Absolutely. Ten battle-tested functions work across 100+ domains."
+- Contributing immediately becomes possible on day 1
+- "Experience" is transferable, reusable code
 
 ---
 
