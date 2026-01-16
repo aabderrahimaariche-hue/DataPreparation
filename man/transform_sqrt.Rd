@@ -4,12 +4,14 @@
 \alias{transform_sqrt}
 \title{Apply Square Root Transformation}
 \usage{
-transform_sqrt(data, col)
+transform_sqrt(data = NULL, col, dataset_name = NULL)
 }
 \arguments{
-\item{data}{A data frame}
+\item{data}{A data frame (optional if dataset_name provided)}
 
 \item{col}{Column name (character)}
+
+\item{dataset_name}{Character. Name of registered dataset to use.}
 }
 \value{
 Data frame with square root transformed column

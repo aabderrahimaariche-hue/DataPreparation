@@ -4,14 +4,16 @@
 \alias{create_difference_features}
 \title{Create Difference Features}
 \usage{
-create_difference_features(data, col, lag = 1)
+create_difference_features(data = NULL, col, lag = 1, dataset_name = NULL)
 }
 \arguments{
-\item{data}{A data frame}
+\item{data}{A data frame (optional if dataset_name provided)}
 
 \item{col}{Column name (character)}
 
 \item{lag}{Lag period}
+
+\item{dataset_name}{Character. Name of registered dataset to use.}
 }
 \value{
 Data frame with difference column

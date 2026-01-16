@@ -4,16 +4,24 @@
 \alias{generate_ngram_char_variants}
 \title{Generate Character-level N-grams with Multiple Methods}
 \usage{
-generate_ngram_char_variants(data, string_cols, ngram_min = 2, ngram_max = 4)
+generate_ngram_char_variants(
+  data = NULL,
+  string_cols,
+  ngram_min = 2,
+  ngram_max = 4,
+  dataset_name = NULL
+)
 }
 \arguments{
-\item{data}{A data frame containing string columns.}
+\item{data}{A data frame containing string columns (optional if dataset_name provided).}
 
 \item{string_cols}{Character vector of column names to extract n-grams from.}
 
 \item{ngram_min}{Numeric. Minimum n-gram size (default: 2).}
 
 \item{ngram_max}{Numeric. Maximum n-gram size (default: 4).}
+
+\item{dataset_name}{Character. Name of registered dataset to use.}
 }
 \value{
 A nested list structure:

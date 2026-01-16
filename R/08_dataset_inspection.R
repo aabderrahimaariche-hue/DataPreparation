@@ -10,8 +10,9 @@
 #' data types, missing values, and memory usage. Helps identify which
 #' columns are suitable for DataPreparation functions.
 #'
-#' @param data A data frame to inspect
+#' @param data A data frame to inspect (optional if dataset_name provided)
 #' @param verbose Logical. If TRUE (default), prints detailed report
+#' @param dataset_name Character. Name of registered dataset to use.
 #'
 #' @return Invisibly returns a list with inspection results containing:
 #'   - dimensions: rows and columns
@@ -32,8 +33,17 @@
 #' }
 #'
 #' @export
-inspect_dataset <- function(data, verbose = TRUE) {
-  if (!is.data.frame(data)) stop("data must be a data frame")
+inspect_dataset <- function(data = NULL, verbose = TRUE, dataset_name = NULL) {
+  # Smart data resolution
+  if (!is.null(dataset_name)) {
+    data <- get_registered_dataset(dataset_name)
+  } else if (is.null(data)) {
+    data <- resolve_data_source(data)
+  }
+  
+  if (is.null(data)) {
+    stop("Provide 'data' parameter or set focus_dataset()")
+  }
   
   # Basic dimensions
   n_rows <- nrow(data)
@@ -130,7 +140,7 @@ inspect_dataset <- function(data, verbose = TRUE) {
 #' Checks if your dataset is suitable for using specific DataPreparation
 #' functions. Validates column existence, data types, and data quality.
 #'
-#' @param data A data frame to validate
+#' @param data A data frame to validate (optional if dataset_name provided)
 #' @param string_cols Character vector of column names to use as strings
 #'   (for n-gram generation, linguistic analysis, etc.)
 #' @param numeric_cols Character vector of column names to use as numerics
@@ -138,6 +148,7 @@ inspect_dataset <- function(data, verbose = TRUE) {
 #' @param id_col Character. Name of the ID column that uniquely identifies
 #'   each row (for linguistic analysis functions)
 #' @param verbose Logical. If TRUE, prints validation report
+#' @param dataset_name Character. Name of registered dataset to use.
 #'
 #' @return Logical. TRUE if valid, FALSE otherwise (invisibly)
 #'
@@ -158,9 +169,18 @@ inspect_dataset <- function(data, verbose = TRUE) {
 #' }
 #'
 #' @export
-validate_for_processing <- function(data, string_cols = NULL, numeric_cols = NULL,
-                                     id_col = NULL, verbose = TRUE) {
-  if (!is.data.frame(data)) stop("data must be a data frame")
+validate_for_processing <- function(data = NULL, string_cols = NULL, numeric_cols = NULL,
+                                     id_col = NULL, verbose = TRUE, dataset_name = NULL) {
+  # Smart data resolution
+  if (!is.null(dataset_name)) {
+    data <- get_registered_dataset(dataset_name)
+  } else if (is.null(data)) {
+    data <- resolve_data_source(data)
+  }
+  
+  if (is.null(data)) {
+    stop("Provide 'data' parameter or set focus_dataset()")
+  }
   
   issues <- c()
   
@@ -231,8 +251,9 @@ validate_for_processing <- function(data, string_cols = NULL, numeric_cols = NUL
 #' Shows first few rows of each column with clear formatting,
 #' useful for understanding data before processing.
 #'
-#' @param data A data frame to preview
+#' @param data A data frame to preview (optional if dataset_name provided)
 #' @param n_rows Number of rows to display (default: 5)
+#' @param dataset_name Character. Name of registered dataset to use.
 #'
 #' @return NULL (invisibly). Prints formatted preview.
 #'
@@ -246,8 +267,17 @@ validate_for_processing <- function(data, string_cols = NULL, numeric_cols = NUL
 #' }
 #'
 #' @export
-preview_dataset <- function(data, n_rows = 5) {
-  if (!is.data.frame(data)) stop("data must be a data frame")
+preview_dataset <- function(data = NULL, n_rows = 5, dataset_name = NULL) {
+  # Smart data resolution
+  if (!is.null(dataset_name)) {
+    data <- get_registered_dataset(dataset_name)
+  } else if (is.null(data)) {
+    data <- resolve_data_source(data)
+  }
+  
+  if (is.null(data)) {
+    stop("Provide 'data' parameter or set focus_dataset()")
+  }
   
   n_rows <- min(n_rows, nrow(data))
   

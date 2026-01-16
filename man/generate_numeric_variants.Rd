@@ -12,6 +12,8 @@ generate_numeric_variants(data, numeric_cols)
 \item{data}{A data frame containing numeric columns.}
 
 \item{numeric_cols}{Character vector of numeric column names to transform.}
+
+\item{dataset_name}{Character. Name of registered dataset to use.}
 }
 \value{
 List of candidate datasets with variants

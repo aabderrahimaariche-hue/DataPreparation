@@ -4,14 +4,21 @@
 \alias{compute_category_diversity}
 \title{Compute Category Diversity Score}
 \usage{
-compute_category_diversity(data, categorical_col, delimiter = "\\\\\\\\|")
+compute_category_diversity(
+  data = NULL,
+  categorical_col,
+  delimiter = "\\\\\\\\|",
+  dataset_name = NULL
+)
 }
 \arguments{
-\item{data}{A data frame}
+\item{data}{A data frame (optional if dataset_name provided)}
 
 \item{categorical_col}{Column name with delimited categories}
 
 \item{delimiter}{Pattern to split categories (default: "\\\\|")}
+
+\item{dataset_name}{Character. Name of registered dataset to use.}
 }
 \value{
 Data frame with category, category_count, and diversity metrics

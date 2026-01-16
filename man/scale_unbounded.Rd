@@ -4,12 +4,14 @@
 \alias{scale_unbounded}
 \title{Standardize Numeric Column (Z-Score)}
 \usage{
-scale_unbounded(data, col)
+scale_unbounded(data = NULL, col, dataset_name = NULL)
 }
 \arguments{
-\item{data}{A data frame}
+\item{data}{A data frame (optional if dataset_name provided)}
 
 \item{col}{Column name (character)}
+
+\item{dataset_name}{Character. Name of registered dataset to use.}
 }
 \value{
 Data frame with standardized column (mean=0, sd=1)

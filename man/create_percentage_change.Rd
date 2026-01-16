@@ -4,14 +4,16 @@
 \alias{create_percentage_change}
 \title{Create Percentage Change Features}
 \usage{
-create_percentage_change(data, col, lag = 1)
+create_percentage_change(data = NULL, col, lag = 1, dataset_name = NULL)
 }
 \arguments{
-\item{data}{A data frame}
+\item{data}{A data frame (optional if dataset_name provided)}
 
 \item{col}{Column name (character)}
 
 \item{lag}{Lag period}
+
+\item{dataset_name}{Character. Name of registered dataset to use.}
 }
 \value{
 Data frame with percentage change column

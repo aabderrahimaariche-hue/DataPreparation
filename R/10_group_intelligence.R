@@ -14,11 +14,12 @@
 #' for any identifier grouped by any numeric valeurization column.
 #' Works with ANY pair: userId/rating, customerId/price, sensorId/measurement, etc.
 #'
-#' @param data A data frame
+#' @param data A data frame (optional if dataset_name provided)
 #' @param identifier_col Column name containing identifiers (character)
 #' @param value_col Column name containing numeric values to aggregate (character)
 #' @param include_stats Which statistics to include. Default: all
 #'   c("mean", "std", "min", "max", "median", "count", "variance")
+#' @param dataset_name Character. Name of registered dataset to use.
 #'
 #' @return Data frame with columns: identifier_col, *_mean, *_std, *_min, *_max, *_median, *_count, *_variance
 #'
@@ -35,9 +36,18 @@
 #' }
 #'
 #' @export
-compute_identifier_statistics <- function(data, identifier_col, value_col, 
-                                         include_stats = c("mean", "std", "min", "max", "median", "count", "variance")) {
+compute_identifier_statistics <- function(data = NULL, identifier_col, value_col, 
+                                         include_stats = c("mean", "std", "min", "max", "median", "count", "variance"), dataset_name = NULL) {
+  # Smart data resolution
+  if (!is.null(dataset_name)) {
+    data <- get_registered_dataset(dataset_name)
+  } else if (is.null(data)) {
+    data <- resolve_data_source(data)
+  }
   
+  if (is.null(data)) {
+    stop("Provide 'data' parameter or set focus_dataset()")
+  }
   if(!(identifier_col %in% colnames(data))) stop(paste("Identifier column not found:", identifier_col))
   if(!(value_col %in% colnames(data))) stop(paste("Value column not found:", value_col))
   
@@ -62,10 +72,11 @@ compute_identifier_statistics <- function(data, identifier_col, value_col,
 #' Calculate how each identifier deviates from a reference value (usually global mean or group mean).
 #' Enables detection of user bias, item bias, etc.
 #'
-#' @param data A data frame with at least: identifier_col, value_col, reference_col
+#' @param data A data frame with at least: identifier_col, value_col, reference_col (optional if dataset_name provided)
 #' @param identifier_col Identifier column name (e.g., "userId")
 #' @param value_col Value column name (e.g., "rating")
 #' @param reference_col Reference column name for comparison (e.g., "movie_avg_rating")
+#' @param dataset_name Character. Name of registered dataset to use.
 #'
 #' @return Data frame with original columns + deviation metrics:
 #'   *_deviation (absolute difference)
@@ -81,8 +92,17 @@ compute_identifier_statistics <- function(data, identifier_col, value_col,
 #' }
 #'
 #' @export
-compute_identifier_deviation <- function(data, identifier_col, value_col, reference_col) {
+compute_identifier_deviation <- function(data = NULL, identifier_col, value_col, reference_col, dataset_name = NULL) {
+  # Smart data resolution
+  if (!is.null(dataset_name)) {
+    data <- get_registered_dataset(dataset_name)
+  } else if (is.null(data)) {
+    data <- resolve_data_source(data)
+  }
   
+  if (is.null(data)) {
+    stop("Provide 'data' parameter or set focus_dataset()")
+  }
   if(!(identifier_col %in% colnames(data))) stop(paste("Identifier column not found:", identifier_col))
   if(!(value_col %in% colnames(data))) stop(paste("Value column not found:", value_col))
   if(!(reference_col %in% colnames(data))) stop(paste("Reference column not found:", reference_col))

@@ -5,15 +5,16 @@
 \title{Compute Rolling Statistics}
 \usage{
 compute_rolling_statistics(
-  data,
+  data = NULL,
   group_col,
   numeric_col,
   window = 5,
-  statistic = "mean"
+  statistic = "mean",
+  dataset_name = NULL
 )
 }
 \arguments{
-\item{data}{A data frame}
+\item{data}{A data frame (optional if dataset_name provided)}
 
 \item{group_col}{Grouping column name}
 
@@ -22,6 +23,8 @@ compute_rolling_statistics(
 \item{window}{Window size}
 
 \item{statistic}{Type of statistic ("mean", "sum", "sd")}
+
+\item{dataset_name}{Character. Name of registered dataset to use.}
 }
 \value{
 Data frame with rolling statistics

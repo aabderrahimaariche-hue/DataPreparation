@@ -6,15 +6,27 @@
 
 #' Scale Numeric Values to 0-1 Range
 #'
-#' @param data A data frame
+#' @param data A data frame (optional if dataset_name provided)
 #' @param col Column name (character)
 #' @param min_val Minimum value (default: column min)
 #' @param max_val Maximum value (default: column max)
+#' @param dataset_name Character. Name of registered dataset to use.
 #'
 #' @return Data frame with scaled column
 #'
 #' @export
-scale_betweenRange <- function(data, col, min_val = NULL, max_val = NULL) {
+scale_betweenRange <- function(data = NULL, col, min_val = NULL, max_val = NULL, dataset_name = NULL) {
+  # Smart data resolution
+  if (!is.null(dataset_name)) {
+    data <- get_registered_dataset(dataset_name)
+  } else if (is.null(data)) {
+    data <- resolve_data_source(data)
+  }
+  
+  if (is.null(data)) {
+    stop("Provide 'data' parameter or set focus_dataset()")
+  }
+  
   if(!(col %in% colnames(data))) stop(paste("Column not found:", col))
   if(is.null(min_val)) min_val <- min(data[[col]], na.rm = TRUE)
   if(is.null(max_val)) max_val <- max(data[[col]], na.rm = TRUE)
@@ -23,13 +35,25 @@ scale_betweenRange <- function(data, col, min_val = NULL, max_val = NULL) {
 
 #' Standardize Numeric Column (Z-Score)
 #'
-#' @param data A data frame
+#' @param data A data frame (optional if dataset_name provided)
 #' @param col Column name (character)
+#' @param dataset_name Character. Name of registered dataset to use.
 #'
 #' @return Data frame with standardized column (mean=0, sd=1)
 #'
 #' @export
-scale_unbounded <- function(data, col) {
+scale_unbounded <- function(data = NULL, col, dataset_name = NULL) {
+  # Smart data resolution
+  if (!is.null(dataset_name)) {
+    data <- get_registered_dataset(dataset_name)
+  } else if (is.null(data)) {
+    data <- resolve_data_source(data)
+  }
+  
+  if (is.null(data)) {
+    stop("Provide 'data' parameter or set focus_dataset()")
+  }
+  
   if(!(col %in% colnames(data))) stop(paste("Column not found:", col))
   mean_val <- mean(data[[col]], na.rm = TRUE)
   sd_val <- sd(data[[col]], na.rm = TRUE)
@@ -38,13 +62,25 @@ scale_unbounded <- function(data, col) {
 
 #' Detect Half vs Full Ratings
 #'
-#' @param data A data frame
+#' @param data A data frame (optional if dataset_name provided)
 #' @param col Column name (character)
+#' @param dataset_name Character. Name of registered dataset to use.
 #'
 #' @return Data frame with half/full flag
 #'
 #' @export
-detect_extract_half_full <- function(data, col) {
+detect_extract_half_full <- function(data = NULL, col, dataset_name = NULL) {
+  # Smart data resolution
+  if (!is.null(dataset_name)) {
+    data <- get_registered_dataset(dataset_name)
+  } else if (is.null(data)) {
+    data <- resolve_data_source(data)
+  }
+  
+  if (is.null(data)) {
+    stop("Provide 'data' parameter or set focus_dataset()")
+  }
+  
   if(!(col %in% colnames(data))) stop(paste("Column not found:", col))
   new_col <- paste0(col, "_halffull")
   data %>% mutate(!!sym(new_col) := ifelse(.data[[col]] %% 1 == 0.5, 0.5, 1))
@@ -52,55 +88,103 @@ detect_extract_half_full <- function(data, col) {
 
 #' Apply Logarithmic Transformation
 #'
-#' @param data A data frame
+#' @param data A data frame (optional if dataset_name provided)
 #' @param col Column name (character)
 #' @param offset Offset to add before log transformation
+#' @param dataset_name Character. Name of registered dataset to use.
 #'
 #' @return Data frame with log-transformed column
 #'
 #' @export
-transform_log <- function(data, col, offset = 1) {
+transform_log <- function(data = NULL, col, offset = 1, dataset_name = NULL) {
+  # Smart data resolution
+  if (!is.null(dataset_name)) {
+    data <- get_registered_dataset(dataset_name)
+  } else if (is.null(data)) {
+    data <- resolve_data_source(data)
+  }
+  
+  if (is.null(data)) {
+    stop("Provide 'data' parameter or set focus_dataset()")
+  }
+  
   data %>%
     mutate(!!sym(paste0(col, "_log")) := log(!!sym(col) + offset))
 }
 
 #' Apply Square Root Transformation
 #'
-#' @param data A data frame
+#' @param data A data frame (optional if dataset_name provided)
 #' @param col Column name (character)
+#' @param dataset_name Character. Name of registered dataset to use.
 #'
 #' @return Data frame with square root transformed column
 #'
 #' @export
-transform_sqrt <- function(data, col) {
+transform_sqrt <- function(data = NULL, col, dataset_name = NULL) {
+  # Smart data resolution
+  if (!is.null(dataset_name)) {
+    data <- get_registered_dataset(dataset_name)
+  } else if (is.null(data)) {
+    data <- resolve_data_source(data)
+  }
+  
+  if (is.null(data)) {
+    stop("Provide 'data' parameter or set focus_dataset()")
+  }
+  
   data %>%
     mutate(!!sym(paste0(col, "_sqrt")) := sqrt(pmax(0, !!sym(col))))
 }
 
 #' Apply Exponential Transformation
 #'
-#' @param data A data frame
+#' @param data A data frame (optional if dataset_name provided)
 #' @param col Column name (character)
 #' @param scale Scale factor for exponential
+#' @param dataset_name Character. Name of registered dataset to use.
 #'
 #' @return Data frame with exponentially transformed column
 #'
 #' @export
-transform_exp <- function(data, col, scale = 1) {
+transform_exp <- function(data = NULL, col, scale = 1, dataset_name = NULL) {
+  # Smart data resolution
+  if (!is.null(dataset_name)) {
+    data <- get_registered_dataset(dataset_name)
+  } else if (is.null(data)) {
+    data <- resolve_data_source(data)
+  }
+  
+  if (is.null(data)) {
+    stop("Provide 'data' parameter or set focus_dataset()")
+  }
+  
   data %>%
     mutate(!!sym(paste0(col, "_exp")) := exp(!!sym(col) * scale))
 }
 
 #' Create Polynomial Features
 #'
-#' @param data A data frame
+#' @param data A data frame (optional if dataset_name provided)
 #' @param col Column name (character)
 #' @param degree Degree of polynomial (2 or 3)
+#' @param dataset_name Character. Name of registered dataset to use.
 #'
 #' @return Data frame with polynomial feature columns
 #'
 #' @export
-create_polynomial_features <- function(data, col, degree = 2) {
+create_polynomial_features <- function(data = NULL, col, degree = 2, dataset_name = NULL) {
+  # Smart data resolution
+  if (!is.null(dataset_name)) {
+    data <- get_registered_dataset(dataset_name)
+  } else if (is.null(data)) {
+    data <- resolve_data_source(data)
+  }
+  
+  if (is.null(data)) {
+    stop("Provide 'data' parameter or set focus_dataset()")
+  }
+  
   result <- data
   
   if(degree >= 2) {
@@ -118,29 +202,53 @@ create_polynomial_features <- function(data, col, degree = 2) {
 
 #' Create Interaction Terms
 #'
-#' @param data A data frame
+#' @param data A data frame (optional if dataset_name provided)
 #' @param col1 First column name
 #' @param col2 Second column name
+#' @param dataset_name Character. Name of registered dataset to use.
 #'
 #' @return Data frame with interaction term
 #'
 #' @export
-create_interaction_features <- function(data, col1, col2) {
+create_interaction_features <- function(data = NULL, col1, col2, dataset_name = NULL) {
+  # Smart data resolution
+  if (!is.null(dataset_name)) {
+    data <- get_registered_dataset(dataset_name)
+  } else if (is.null(data)) {
+    data <- resolve_data_source(data)
+  }
+  
+  if (is.null(data)) {
+    stop("Provide 'data' parameter or set focus_dataset()")
+  }
+  
   data %>%
     mutate(!!sym(paste0(col1, "_x_", col2)) := !!sym(col1) * !!sym(col2))
 }
 
 #' Create Ratio Features
 #'
-#' @param data A data frame
+#' @param data A data frame (optional if dataset_name provided)
 #' @param col1 Numerator column name
 #' @param col2 Denominator column name
 #' @param safe Handle division by zero (default: TRUE)
+#' @param dataset_name Character. Name of registered dataset to use.
 #'
 #' @return Data frame with ratio column
 #'
 #' @export
-create_ratio_features <- function(data, col1, col2, safe = TRUE) {
+create_ratio_features <- function(data = NULL, col1, col2, safe = TRUE, dataset_name = NULL) {
+  # Smart data resolution
+  if (!is.null(dataset_name)) {
+    data <- get_registered_dataset(dataset_name)
+  } else if (is.null(data)) {
+    data <- resolve_data_source(data)
+  }
+  
+  if (is.null(data)) {
+    stop("Provide 'data' parameter or set focus_dataset()")
+  }
+  
   if(safe) {
     data %>%
       mutate(!!sym(paste0(col1, "_div_", col2)) := 
@@ -153,14 +261,26 @@ create_ratio_features <- function(data, col1, col2, safe = TRUE) {
 
 #' Bin Numeric Column (Quantile-Based)
 #'
-#' @param data A data frame
+#' @param data A data frame (optional if dataset_name provided)
 #' @param col Column name (character)
 #' @param n_bins Number of bins
+#' @param dataset_name Character. Name of registered dataset to use.
 #'
 #' @return Data frame with binned column
 #'
 #' @export
-binning_quantile <- function(data, col, n_bins = 5) {
+binning_quantile <- function(data = NULL, col, n_bins = 5, dataset_name = NULL) {
+  # Smart data resolution
+  if (!is.null(dataset_name)) {
+    data <- get_registered_dataset(dataset_name)
+  } else if (is.null(data)) {
+    data <- resolve_data_source(data)
+  }
+  
+  if (is.null(data)) {
+    stop("Provide 'data' parameter or set focus_dataset()")
+  }
+  
   data %>%
     mutate(!!sym(paste0(col, "_bin_q", n_bins)) := 
            as.integer(ntile(!!sym(col), n_bins)))
@@ -168,14 +288,26 @@ binning_quantile <- function(data, col, n_bins = 5) {
 
 #' Bin Numeric Column (Equal-Width)
 #'
-#' @param data A data frame
+#' @param data A data frame (optional if dataset_name provided)
 #' @param col Column name (character)
 #' @param n_bins Number of bins
+#' @param dataset_name Character. Name of registered dataset to use.
 #'
 #' @return Data frame with binned column
 #'
 #' @export
-binning_width <- function(data, col, n_bins = 5) {
+binning_width <- function(data = NULL, col, n_bins = 5, dataset_name = NULL) {
+  # Smart data resolution
+  if (!is.null(dataset_name)) {
+    data <- get_registered_dataset(dataset_name)
+  } else if (is.null(data)) {
+    data <- resolve_data_source(data)
+  }
+  
+  if (is.null(data)) {
+    stop("Provide 'data' parameter or set focus_dataset()")
+  }
+  
   var_min <- min(data[[col]], na.rm = TRUE)
   var_max <- max(data[[col]], na.rm = TRUE)
   bin_width <- (var_max - var_min) / n_bins
@@ -188,14 +320,26 @@ binning_width <- function(data, col, n_bins = 5) {
 
 #' Flag Outliers (IQR Method)
 #'
-#' @param data A data frame
+#' @param data A data frame (optional if dataset_name provided)
 #' @param col Column name (character)
 #' @param multiplier IQR multiplier
+#' @param dataset_name Character. Name of registered dataset to use.
 #'
 #' @return Data frame with outlier flag
 #'
 #' @export
-flag_outliers_iqr <- function(data, col, multiplier = 1.5) {
+flag_outliers_iqr <- function(data = NULL, col, multiplier = 1.5, dataset_name = NULL) {
+  # Smart data resolution
+  if (!is.null(dataset_name)) {
+    data <- get_registered_dataset(dataset_name)
+  } else if (is.null(data)) {
+    data <- resolve_data_source(data)
+  }
+  
+  if (is.null(data)) {
+    stop("Provide 'data' parameter or set focus_dataset()")
+  }
+  
   Q1 <- quantile(data[[col]], 0.25, na.rm = TRUE)
   Q3 <- quantile(data[[col]], 0.75, na.rm = TRUE)
   IQR_val <- Q3 - Q1
@@ -210,14 +354,26 @@ flag_outliers_iqr <- function(data, col, multiplier = 1.5) {
 
 #' Flag Outliers (Z-Score Method)
 #'
-#' @param data A data frame
+#' @param data A data frame (optional if dataset_name provided)
 #' @param col Column name (character)
 #' @param threshold Z-score threshold
+#' @param dataset_name Character. Name of registered dataset to use.
 #'
 #' @return Data frame with outlier flag
 #'
 #' @export
-flag_outliers_zscore <- function(data, col, threshold = 3) {
+flag_outliers_zscore <- function(data = NULL, col, threshold = 3, dataset_name = NULL) {
+  # Smart data resolution
+  if (!is.null(dataset_name)) {
+    data <- get_registered_dataset(dataset_name)
+  } else if (is.null(data)) {
+    data <- resolve_data_source(data)
+  }
+  
+  if (is.null(data)) {
+    stop("Provide 'data' parameter or set focus_dataset()")
+  }
+  
   col_mean <- mean(data[[col]], na.rm = TRUE)
   col_sd <- sd(data[[col]], na.rm = TRUE)
   
@@ -228,14 +384,26 @@ flag_outliers_zscore <- function(data, col, threshold = 3) {
 
 #' Normalize Numeric Column
 #'
-#' @param data A data frame
+#' @param data A data frame (optional if dataset_name provided)
 #' @param col Column name (character)
 #' @param method Normalization method ("minmax", "zscore", "robust", "log")
+#' @param dataset_name Character. Name of registered dataset to use.
 #'
 #' @return Data frame with normalized column
 #'
 #' @export
-normalize_numeric <- function(data, col, method = "minmax") {
+normalize_numeric <- function(data = NULL, col, method = "minmax", dataset_name = NULL) {
+  # Smart data resolution
+  if (!is.null(dataset_name)) {
+    data <- get_registered_dataset(dataset_name)
+  } else if (is.null(data)) {
+    data <- resolve_data_source(data)
+  }
+  
+  if (is.null(data)) {
+    stop("Provide 'data' parameter or set focus_dataset()")
+  }
+  
   col_data <- data[[col]]
   
   if(method == "minmax") {
@@ -262,17 +430,28 @@ normalize_numeric <- function(data, col, method = "minmax") {
 
 #' Compute Rolling Statistics
 #'
-#' @param data A data frame
+#' @param data A data frame (optional if dataset_name provided)
 #' @param group_col Grouping column name
 #' @param numeric_col Numeric column name
 #' @param window Window size
 #' @param statistic Type of statistic ("mean", "sum", "sd")
+#' @param dataset_name Character. Name of registered dataset to use.
 #'
 #' @return Data frame with rolling statistics
 #'
 #' @export
-compute_rolling_statistics <- function(data, group_col, numeric_col, 
-                                      window = 5, statistic = "mean") {
+compute_rolling_statistics <- function(data = NULL, group_col, numeric_col, 
+                                      window = 5, statistic = "mean", dataset_name = NULL) {
+  # Smart data resolution
+  if (!is.null(dataset_name)) {
+    data <- get_registered_dataset(dataset_name)
+  } else if (is.null(data)) {
+    data <- resolve_data_source(data)
+  }
+  
+  if (is.null(data)) {
+    stop("Provide 'data' parameter or set focus_dataset()")
+  }
   
   result <- data %>%
     arrange(!!sym(group_col)) %>%
@@ -295,14 +474,25 @@ compute_rolling_statistics <- function(data, group_col, numeric_col,
 
 #' Compute Group-Wise Statistics
 #'
-#' @param data A data frame
+#' @param data A data frame (optional if dataset_name provided)
 #' @param group_col Grouping column name
 #' @param numeric_col Numeric column name
+#' @param dataset_name Character. Name of registered dataset to use.
 #'
 #' @return Data frame with group statistics joined
 #'
 #' @export
-compute_group_statistics <- function(data, group_col, numeric_col) {
+compute_group_statistics <- function(data = NULL, group_col, numeric_col, dataset_name = NULL) {
+  # Smart data resolution
+  if (!is.null(dataset_name)) {
+    data <- get_registered_dataset(dataset_name)
+  } else if (is.null(data)) {
+    data <- resolve_data_source(data)
+  }
+  
+  if (is.null(data)) {
+    stop("Provide 'data' parameter or set focus_dataset()")
+  }
   
   group_stats <- data %>%
     group_by(!!sym(group_col)) %>%
@@ -324,13 +514,25 @@ compute_group_statistics <- function(data, group_col, numeric_col) {
 
 #' Standardize Numeric Column (Zero Mean, Unit Variance)
 #'
-#' @param data A data frame
+#' @param data A data frame (optional if dataset_name provided)
 #' @param col Column name (character)
+#' @param dataset_name Character. Name of registered dataset to use.
 #'
 #' @return Data frame with standardized column
 #'
 #' @export
-standardize_numeric <- function(data, col) {
+standardize_numeric <- function(data = NULL, col, dataset_name = NULL) {
+  # Smart data resolution
+  if (!is.null(dataset_name)) {
+    data <- get_registered_dataset(dataset_name)
+  } else if (is.null(data)) {
+    data <- resolve_data_source(data)
+  }
+  
+  if (is.null(data)) {
+    stop("Provide 'data' parameter or set focus_dataset()")
+  }
+  
   col_mean <- mean(data[[col]], na.rm = TRUE)
   col_sd <- sd(data[[col]], na.rm = TRUE)
   
@@ -345,13 +547,25 @@ standardize_numeric <- function(data, col) {
 
 #' Create Quantile Features
 #'
-#' @param data A data frame
+#' @param data A data frame (optional if dataset_name provided)
 #' @param col Column name (character)
+#' @param dataset_name Character. Name of registered dataset to use.
 #'
 #' @return Data frame with quantile column
 #'
 #' @export
-create_quantile_features <- function(data, col) {
+create_quantile_features <- function(data = NULL, col, dataset_name = NULL) {
+  # Smart data resolution
+  if (!is.null(dataset_name)) {
+    data <- get_registered_dataset(dataset_name)
+  } else if (is.null(data)) {
+    data <- resolve_data_source(data)
+  }
+  
+  if (is.null(data)) {
+    stop("Provide 'data' parameter or set focus_dataset()")
+  }
+  
   data %>%
     mutate(!!sym(paste0(col, "_quantile")) := 
            ecdf(!!sym(col))(!!sym(col)))
@@ -359,14 +573,26 @@ create_quantile_features <- function(data, col) {
 
 #' Create Rank Features
 #'
-#' @param data A data frame
+#' @param data A data frame (optional if dataset_name provided)
 #' @param col Column name (character)
 #' @param group_col Optional grouping column
+#' @param dataset_name Character. Name of registered dataset to use.
 #'
 #' @return Data frame with rank column
 #'
 #' @export
-create_rank_features <- function(data, col, group_col = NULL) {
+create_rank_features <- function(data = NULL, col, group_col = NULL, dataset_name = NULL) {
+  # Smart data resolution
+  if (!is.null(dataset_name)) {
+    data <- get_registered_dataset(dataset_name)
+  } else if (is.null(data)) {
+    data <- resolve_data_source(data)
+  }
+  
+  if (is.null(data)) {
+    stop("Provide 'data' parameter or set focus_dataset()")
+  }
+  
   if(is.null(group_col)) {
     data %>%
       mutate(!!sym(paste0(col, "_rank")) := rank(!!sym(col), na.last = "keep"))
@@ -381,14 +607,26 @@ create_rank_features <- function(data, col, group_col = NULL) {
 
 #' Create Percentage Change Features
 #'
-#' @param data A data frame
+#' @param data A data frame (optional if dataset_name provided)
 #' @param col Column name (character)
 #' @param lag Lag period
+#' @param dataset_name Character. Name of registered dataset to use.
 #'
 #' @return Data frame with percentage change column
 #'
 #' @export
-create_percentage_change <- function(data, col, lag = 1) {
+create_percentage_change <- function(data = NULL, col, lag = 1, dataset_name = NULL) {
+  # Smart data resolution
+  if (!is.null(dataset_name)) {
+    data <- get_registered_dataset(dataset_name)
+  } else if (is.null(data)) {
+    data <- resolve_data_source(data)
+  }
+  
+  if (is.null(data)) {
+    stop("Provide 'data' parameter or set focus_dataset()")
+  }
+  
   data %>%
     mutate(!!sym(paste0(col, "_pct_change_lag", lag)) := 
            ((!!sym(col) - lag(!!sym(col), lag)) / lag(!!sym(col), lag)) * 100)
@@ -396,14 +634,26 @@ create_percentage_change <- function(data, col, lag = 1) {
 
 #' Create Difference Features
 #'
-#' @param data A data frame
+#' @param data A data frame (optional if dataset_name provided)
 #' @param col Column name (character)
 #' @param lag Lag period
+#' @param dataset_name Character. Name of registered dataset to use.
 #'
 #' @return Data frame with difference column
 #'
 #' @export
-create_difference_features <- function(data, col, lag = 1) {
+create_difference_features <- function(data = NULL, col, lag = 1, dataset_name = NULL) {
+  # Smart data resolution
+  if (!is.null(dataset_name)) {
+    data <- get_registered_dataset(dataset_name)
+  } else if (is.null(data)) {
+    data <- resolve_data_source(data)
+  }
+  
+  if (is.null(data)) {
+    stop("Provide 'data' parameter or set focus_dataset()")
+  }
+  
   data %>%
     mutate(!!sym(paste0(col, "_diff_lag", lag)) := 
            !!sym(col) - lag(!!sym(col), lag))
@@ -411,13 +661,25 @@ create_difference_features <- function(data, col, lag = 1) {
 
 #' Generate Numeric Feature Variants
 #'
-#' @param data A data frame
+#' @param data A data frame (optional if dataset_name provided)
 #' @param numeric_cols Vector of numeric column names
+#' @param dataset_name Character. Name of registered dataset to use.
 #'
 #' @return List of candidate datasets with variants
 #'
 #' @export
-generate_numeric_variants <- function(data, numeric_cols) {
+generate_numeric_variants <- function(data = NULL, numeric_cols, dataset_name = NULL) {
+  # Smart data resolution
+  if (!is.null(dataset_name)) {
+    data <- get_registered_dataset(dataset_name)
+  } else if (is.null(data)) {
+    data <- resolve_data_source(data)
+  }
+  
+  if (is.null(data)) {
+    stop("Provide 'data' parameter or set focus_dataset()")
+  }
+  
   candidates <- list()
   for(col in numeric_cols) {
     if(!(col %in% colnames(data))) stop(paste("Column not found:", col))
@@ -432,21 +694,33 @@ generate_numeric_variants <- function(data, numeric_cols) {
 
 #' Generate Advanced Numeric Variants
 #'
-#' @param data A data frame
+#' @param data A data frame (optional if dataset_name provided)
 #' @param numeric_cols Vector of numeric column names
 #' @param include_poly Include polynomial features
 #' @param include_transforms Include transformations
 #' @param include_bins Include binning features
 #' @param include_outliers Include outlier flags
+#' @param dataset_name Character. Name of registered dataset to use.
 #'
 #' @return List of advanced variant datasets
 #'
 #' @export
-generate_numeric_variants_advanced <- function(data, numeric_cols, 
+generate_numeric_variants_advanced <- function(data = NULL, numeric_cols, 
                                include_poly = TRUE, 
                                include_transforms = TRUE,
                                include_bins = TRUE,
-                               include_outliers = TRUE) {
+                               include_outliers = TRUE,
+                               dataset_name = NULL) {
+  # Smart data resolution
+  if (!is.null(dataset_name)) {
+    data <- get_registered_dataset(dataset_name)
+  } else if (is.null(data)) {
+    data <- resolve_data_source(data)
+  }
+  
+  if (is.null(data)) {
+    stop("Provide 'data' parameter or set focus_dataset()")
+  }
   
   candidates <- list()
   
@@ -508,13 +782,25 @@ generate_numeric_variants_advanced <- function(data, numeric_cols,
 
 #' Generate Categorical Encoding Variants
 #'
-#' @param data A data frame
+#' @param data A data frame (optional if dataset_name provided)
 #' @param label_cols Vector of categorical column names
+#' @param dataset_name Character. Name of registered dataset to use.
 #'
 #' @return List of encoding variant datasets
 #'
 #' @export
-generate_categorical_variants <- function(data, label_cols) {
+generate_categorical_variants <- function(data = NULL, label_cols, dataset_name = NULL) {
+  # Smart data resolution
+  if (!is.null(dataset_name)) {
+    data <- get_registered_dataset(dataset_name)
+  } else if (is.null(data)) {
+    data <- resolve_data_source(data)
+  }
+  
+  if (is.null(data)) {
+    stop("Provide 'data' parameter or set focus_dataset()")
+  }
+  
   candidates <- list()
   for(col in label_cols) {
     if(!(col %in% colnames(data))) stop(paste("Column not found:", col))

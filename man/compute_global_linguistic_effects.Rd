@@ -5,15 +5,16 @@
 \title{Compute Global Linguistic Effects on Target Variable}
 \usage{
 compute_global_linguistic_effects(
-  data,
+  data = NULL,
   string_col = "title",
   id_col = "movieId",
   rating_col = "rating",
-  min_word_frequency = 5
+  min_word_frequency = 5,
+  dataset_name = NULL
 )
 }
 \arguments{
-\item{data}{A data frame with string column, target variable, and ID column.}
+\item{data}{A data frame with string column, target variable, and ID column (optional if dataset_name provided).}
 
 \item{string_col}{Character. String column to analyze (default: "title").}
 
@@ -22,6 +23,8 @@ compute_global_linguistic_effects(
 \item{rating_col}{Character. Target variable column (default: "rating").}
 
 \item{min_word_frequency}{Numeric. Minimum word frequency threshold (default: 5).}
+
+\item{dataset_name}{Character. Name of registered dataset to use.}
 }
 \value{
 A list containing:

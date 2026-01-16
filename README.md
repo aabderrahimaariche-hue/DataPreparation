@@ -130,7 +130,173 @@ devtools::install_github("aabderrahimaariche-hue/DataPreparation")
 ```r
 library(DataPreparation)
 ```
+---
 
+## 🏗️ Code Structure & Architecture
+
+### Package Organization
+
+The DataPreparation package is organized into **9 functional modules**, each addressing specific data preparation challenges:
+
+#### **Module 1: NA Handling (4 functions)**
+- Functions: `remove_na_columns()`, `impute_na_numeric()`, `flag_na_column()`, `summarize_na_rows()`
+- Purpose: Manage missing values intelligently
+- Use when: Dataset contains NA/missing values
+
+#### **Module 2: Numeric Features (24 functions)**
+- Functions: Scaling, transformations, polynomial features, binning, outlier detection, normalization
+- Purpose: Engineer and transform numeric variables
+- Use when: Working with quantitative data (sales, measurements, metrics)
+
+#### **Module 3: Timestamp Features (2 functions)**
+- Functions: `extract_timestamp_features()`, `extract_year_from_string()`
+- Purpose: Extract temporal patterns from dates/times
+- Use when: Data contains date/time variables
+
+#### **Module 4: String Features (3 functions)**
+- Functions: String processing, validation, variant generation
+- Purpose: Prepare and validate string-based features
+- Use when: Working with categorical or text data
+
+#### **Module 5: N-gram Generation (2 functions)**
+- Functions: `generate_ngram_char_variants()`, `generate_ngram_word_variants()`
+- Purpose: Generate linguistic features from text
+- Use when: Analyzing text content (titles, descriptions, reviews)
+
+#### **Module 6: Position Extraction (3 functions)**
+- Functions: `extract_prefix_patterns()`, `extract_infix_patterns()`, `extract_suffix_patterns()`
+- Purpose: Extract position-specific patterns from text
+- Use when: Pattern location matters (e.g., prefix analysis, suffix extraction)
+
+#### **Module 7: Linguistic Analysis (8 functions)**
+- Functions: Linguistic profiling, effect computation, preference extraction, position importance
+- Purpose: Advanced linguistic and textual analysis
+- Use when: Performing NLP or text-based intelligence extraction
+
+#### **Module 8: Group Intelligence (9 functions)**
+- Functions: Category combinations, diversity, preferences, statistics, deviations
+- Purpose: Analyze group behavior and patterns
+- Use when: Working with categorical data and group-level insights
+
+#### **Module 9: Categorical Intelligence (7 functions)**
+- Functions: Category classification, encoding, pattern detection
+- Purpose: Intelligent categorical variable handling
+- Use when: Processing categorical features and encodings
+
+#### **Module 10: Dataset Inspection (4 functions)**
+- Functions: `inspect_dataset()`, `validate_for_processing()`, `preview_dataset()`, `check_memory_usage()`
+- Purpose: Validate and inspect data before processing
+- Use when: Starting data preparation workflow
+
+#### **Module 11: Automatic Workflow Generator (4 functions)**
+- Functions: `detect_datasets()`, `show_dataset_columns()`, `generate_workflow_interactive()`, `generate_workflow_script()`
+- Purpose: Auto-generate complete analysis workflows
+- Use when: No manual coding desired - let the system generate workflows
+
+### File Structure
+
+```
+R/
+  00_dataset_registry.R      # Dataset management & focus mode
+  01_na_handling.R           # NA/missing value functions
+  02_numeric_features.R      # Numeric transformation & engineering
+  03_timestamp_features.R    # Date/time extraction
+  04_string_features.R       # String processing
+  05_ngram_generation.R      # N-gram creation
+  06_position_extraction.R   # Prefix/infix/suffix extraction
+  07_linguistic_analysis.R   # Advanced text analysis
+  08_group_intelligence.R    # Category analysis
+  09_categorical_intelligence.R # Categorical encoding
+  10_dataset_inspection.R    # Dataset validation
+  11_workflow_generator.R    # Auto workflow generation
+  zzz.R                      # Package initialization & conflict resolution
+
+man/
+  *.Rd                       # Auto-generated roxygen documentation
+
+documentation/
+  startup-cores/             # Domain-specific implementation guides
+  guides/                    # Feature guides and tutorials
+  project-status/            # Status reports and changelogs
+```
+
+### Key Features
+
+#### **🎯 Dataset Registry System**
+Work with multiple datasets in memory with intelligent focus management:
+
+```r
+library(DataPreparation)
+
+# Register datasets
+movies <- data.frame(id = 1:3, title = c("Matrix", "Inception", "Interstellar"))
+register_dataset(movies, "movies")
+
+# Set focus on specific dataset
+focus_dataset("movies")
+
+# Use functions without specifying data parameter
+head(movies)  # Functions automatically use focused dataset
+```
+
+**Benefits:**
+- ✅ Work with multiple datasets seamlessly
+- ✅ No need to pass `data` parameter every time
+- ✅ Automatic parameter resolution (explicit → focus → implicit)
+- ✅ Backward compatible (functions still work with explicit data parameter)
+
+#### **🔄 Focus Mode System**
+Three ways to use DataPreparation functions:
+
+**Option 1: Explicit Data Parameter (Always Works)**
+```r
+result <- normalize_numeric(movies, "rating")
+```
+
+**Option 2: Dataset Name Parameter (Recommended)**
+```r
+result <- normalize_numeric(dataset_name = "movies", column = "rating")
+```
+
+**Option 3: Implicit Focus (Most Convenient)**
+```r
+focus_dataset("movies")
+result <- normalize_numeric("rating")  # Automatically uses focused dataset
+```
+
+#### **⚡ Conflict Resolution**
+The package automatically manages function name conflicts between libraries. No action needed - conflicts are resolved at load time:
+
+```r
+library(DataPreparation)  # Automatically resolves conflicts
+
+# These work correctly regardless of load order
+movies <- data.frame(id = 1:3, rating = c(8.7, 8.8, 8.6))
+filtered <- dplyr::filter(movies, rating > 8.5)
+```
+
+**Resolved Conflicts**: filter, select, mutate, summarise, group_by, rename, arrange, distinct, lag, lead, intersect, setdiff, union
+
+#### **📊 Memory Management**
+Monitor and optimize RAM usage for large datasets:
+
+```r
+# Check memory usage
+memory_summary <- get_memory_summary()
+
+# Remove datasets to free memory
+drop_dataset('old_data')
+drop_by_pattern('temp_.*')  # Remove all temp_* datasets
+```
+
+### Workflow Examples
+
+See complete workflow examples:
+- **Basic Workflow**: [EXAMPLE_WORKFLOW.R](EXAMPLE_WORKFLOW.R)
+- **Medical Domain**: [EXAMPLE_CANCER_WORKFLOW.R](EXAMPLE_CANCER_WORKFLOW.R)
+- **Interactive Generator**: Use `generate_workflow_interactive()` in R console
+
+---
 ## ▶️ Quick Start
 
 ### Example 0: Automatic Workflow Generation (NEW!)

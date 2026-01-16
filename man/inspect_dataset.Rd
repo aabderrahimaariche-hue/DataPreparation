@@ -4,12 +4,14 @@
 \alias{inspect_dataset}
 \title{Inspect Dataset Structure and Contents}
 \usage{
-inspect_dataset(data, verbose = TRUE)
+inspect_dataset(data = NULL, verbose = TRUE, dataset_name = NULL)
 }
 \arguments{
-\item{data}{A data frame to inspect}
+\item{data}{A data frame to inspect (optional if dataset_name provided)}
 
 \item{verbose}{Logical. If TRUE (default), prints detailed report}
+
+\item{dataset_name}{Character. Name of registered dataset to use.}
 }
 \value{
 Invisibly returns a list with inspection results containing:

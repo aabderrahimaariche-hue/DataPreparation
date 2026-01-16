@@ -12,6 +12,8 @@ generate_categorical_variants(data, label_cols)
 \item{data}{A data frame containing categorical columns.}
 
 \item{label_cols}{Character vector of categorical column names to encode.}
+
+\item{dataset_name}{Character. Name of registered dataset to use.}
 }
 \value{
 List of encoding variant datasets

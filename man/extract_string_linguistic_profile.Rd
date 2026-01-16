@@ -5,14 +5,15 @@
 \title{Extract Linguistic Profile from String Data}
 \usage{
 extract_string_linguistic_profile(
-  data,
+  data = NULL,
   string_col = "title",
   id_col = "movieId",
-  min_word_frequency = 5
+  min_word_frequency = 5,
+  dataset_name = NULL
 )
 }
 \arguments{
-\item{data}{A data frame containing the string column to analyze.}
+\item{data}{A data frame containing the string column to analyze (optional if dataset_name provided).}
 
 \item{string_col}{Character. Name of the string column to analyze (default: "title").}
 
@@ -20,6 +21,8 @@ extract_string_linguistic_profile(
 
 \item{min_word_frequency}{Numeric. Minimum frequency threshold for extracting
 high-frequency words (default: 5).}
+
+\item{dataset_name}{Character. Name of registered dataset to use.}
 }
 \value{
 A list containing:

@@ -4,22 +4,18 @@
 \alias{flag_na_column}
 \title{Flag NA Values in Column}
 \usage{
-flag_na_column(data, col)
+flag_na_column(data = NULL, col, dataset_name = NULL)
 }
 \arguments{
-\item{data}{A data frame}
+\item{data}{A data frame (optional if dataset_name provided)}
 
 \item{col}{Column name (character)}
+
+\item{dataset_name}{Character. Name of registered dataset to use.}
 }
 \value{
 Data frame with new NA flag column
 }
 \description{
 Flag NA Values in Column
-}
-\examples{
-\dontrun{
-flag_na_column(mtcars, "mpg")
-}
-
 }

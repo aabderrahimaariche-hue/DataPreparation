@@ -4,14 +4,16 @@
 \alias{normalize_numeric}
 \title{Normalize Numeric Column}
 \usage{
-normalize_numeric(data, col, method = "minmax")
+normalize_numeric(data = NULL, col, method = "minmax", dataset_name = NULL)
 }
 \arguments{
-\item{data}{A data frame}
+\item{data}{A data frame (optional if dataset_name provided)}
 
 \item{col}{Column name (character)}
 
 \item{method}{Normalization method ("minmax", "zscore", "robust", "log")}
+
+\item{dataset_name}{Character. Name of registered dataset to use.}
 }
 \value{
 Data frame with normalized column

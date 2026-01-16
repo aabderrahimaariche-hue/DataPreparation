@@ -5,14 +5,15 @@
 \title{Compute Group Statistics for Any Identifier}
 \usage{
 compute_identifier_statistics(
-  data,
+  data = NULL,
   identifier_col,
   value_col,
-  include_stats = c("mean", "std", "min", "max", "median", "count", "variance")
+  include_stats = c("mean", "std", "min", "max", "median", "count", "variance"),
+  dataset_name = NULL
 )
 }
 \arguments{
-\item{data}{A data frame}
+\item{data}{A data frame (optional if dataset_name provided)}
 
 \item{identifier_col}{Column name containing identifiers (character)}
 
@@ -20,6 +21,8 @@ compute_identifier_statistics(
 
 \item{include_stats}{Which statistics to include. Default: all
 c("mean", "std", "min", "max", "median", "count", "variance")}
+
+\item{dataset_name}{Character. Name of registered dataset to use.}
 }
 \value{
 Data frame with columns: identifier_col, *_mean, *_std, *_min, *_max, *_median, *_count, *_variance

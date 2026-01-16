@@ -4,14 +4,16 @@
 \alias{transform_exp}
 \title{Apply Exponential Transformation}
 \usage{
-transform_exp(data, col, scale = 1)
+transform_exp(data = NULL, col, scale = 1, dataset_name = NULL)
 }
 \arguments{
-\item{data}{A data frame}
+\item{data}{A data frame (optional if dataset_name provided)}
 
 \item{col}{Column name (character)}
 
 \item{scale}{Scale factor for exponential}
+
+\item{dataset_name}{Character. Name of registered dataset to use.}
 }
 \value{
 Data frame with exponentially transformed column

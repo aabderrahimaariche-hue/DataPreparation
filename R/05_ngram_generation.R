@@ -18,10 +18,11 @@ NULL
 #' Returns a nested list with $all, $clean_only, and $distorted_only variants
 #' for each method, allowing selection based on n-gram quality.
 #'
-#' @param data A data frame containing string columns.
+#' @param data A data frame containing string columns (optional if dataset_name provided).
 #' @param string_cols Character vector of column names to extract n-grams from.
 #' @param ngram_min Numeric. Minimum n-gram size (default: 2).
 #' @param ngram_max Numeric. Maximum n-gram size (default: 4).
+#' @param dataset_name Character. Name of registered dataset to use.
 #'
 #' @return A nested list structure:
 #'   \code{candidates[[method]][[variant]][[dataset_name]]} where:
@@ -37,7 +38,18 @@ NULL
 #' }
 #'
 #' @export
-generate_ngram_char_variants <- function(data, string_cols, ngram_min = 2, ngram_max = 4) {
+generate_ngram_char_variants <- function(data = NULL, string_cols, ngram_min = 2, ngram_max = 4, dataset_name = NULL) {
+  # Smart data resolution
+  if (!is.null(dataset_name)) {
+    data <- get_registered_dataset(dataset_name)
+  } else if (is.null(data)) {
+    data <- resolve_data_source(data)
+  }
+  
+  if (is.null(data)) {
+    stop("Provide 'data' parameter or set focus_dataset()")
+  }
+  
   candidates <- list(
     sliding = list(all = list(), clean_only = list(), distorted_only = list()),
     stride = list(all = list(), clean_only = list(), distorted_only = list()),
@@ -209,10 +221,11 @@ generate_ngram_char_variants <- function(data, string_cols, ngram_min = 2, ngram
 #' Extract word-level n-grams from string columns. Splits strings by whitespace
 #' and creates n-grams of consecutive words joined by underscores.
 #'
-#' @param data A data frame containing string columns.
+#' @param data A data frame containing string columns (optional if dataset_name provided).
 #' @param string_cols Character vector of column names to extract word n-grams from.
 #' @param ngram_min Numeric. Minimum n-gram size (default: 1 for single words).
 #' @param ngram_max Numeric. Maximum n-gram size (default: 3).
+#' @param dataset_name Character. Name of registered dataset to use.
 #'
 #' @return A named list where each element is a data frame containing:
 #'   - Original data columns
@@ -226,7 +239,18 @@ generate_ngram_char_variants <- function(data, string_cols, ngram_min = 2, ngram
 #' }
 #'
 #' @export
-generate_ngram_word_variants <- function(data, string_cols, ngram_min = 1, ngram_max = 3) {
+generate_ngram_word_variants <- function(data = NULL, string_cols, ngram_min = 1, ngram_max = 3, dataset_name = NULL) {
+  # Smart data resolution
+  if (!is.null(dataset_name)) {
+    data <- get_registered_dataset(dataset_name)
+  } else if (is.null(data)) {
+    data <- resolve_data_source(data)
+  }
+  
+  if (is.null(data)) {
+    stop("Provide 'data' parameter or set focus_dataset()")
+  }
+  
   candidates <- list()
   
   for(col in string_cols) {

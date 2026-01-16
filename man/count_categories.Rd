@@ -5,20 +5,23 @@
 \title{Count Categories per Entity}
 \usage{
 count_categories(
-  data,
+  data = NULL,
   identifier_col = NULL,
   categorical_col,
-  delimiter = "\\\\\\\\|"
+  delimiter = "\\\\\\\\|",
+  dataset_name = NULL
 )
 }
 \arguments{
-\item{data}{A data frame}
+\item{data}{A data frame (optional if dataset_name provided)}
 
 \item{identifier_col}{Column name containing entity identifiers (optional)}
 
 \item{categorical_col}{Column name with delimited categories}
 
 \item{delimiter}{Pattern to split categories (default: "\\\\|")}
+
+\item{dataset_name}{Character. Name of registered dataset to use.}
 }
 \value{
 Data frame with identifier_col (if provided), category_count, and is_multi_category flag

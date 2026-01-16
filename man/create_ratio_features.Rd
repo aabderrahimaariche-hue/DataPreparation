@@ -4,16 +4,24 @@
 \alias{create_ratio_features}
 \title{Create Ratio Features}
 \usage{
-create_ratio_features(data, col1, col2, safe = TRUE)
+create_ratio_features(
+  data = NULL,
+  col1,
+  col2,
+  safe = TRUE,
+  dataset_name = NULL
+)
 }
 \arguments{
-\item{data}{A data frame}
+\item{data}{A data frame (optional if dataset_name provided)}
 
 \item{col1}{Numerator column name}
 
 \item{col2}{Denominator column name}
 
 \item{safe}{Handle division by zero (default: TRUE)}
+
+\item{dataset_name}{Character. Name of registered dataset to use.}
 }
 \value{
 Data frame with ratio column

@@ -5,20 +5,23 @@
 \title{Compute Category Combination Patterns}
 \usage{
 compute_category_combinations(
-  data,
+  data = NULL,
   identifier_col,
   categorical_col,
-  delimiter = "\\\\\\\\|"
+  delimiter = "\\\\\\\\|",
+  dataset_name = NULL
 )
 }
 \arguments{
-\item{data}{A data frame with delimited categories}
+\item{data}{A data frame with delimited categories (optional if dataset_name provided)}
 
 \item{identifier_col}{Column name containing entity identifiers}
 
 \item{categorical_col}{Column name with delimited categories}
 
 \item{delimiter}{Pattern to split categories (default: "\\\\|")}
+
+\item{dataset_name}{Character. Name of registered dataset to use.}
 }
 \value{
 Data frame with multi-category combinations and their frequency

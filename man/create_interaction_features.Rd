@@ -4,14 +4,16 @@
 \alias{create_interaction_features}
 \title{Create Interaction Terms}
 \usage{
-create_interaction_features(data, col1, col2)
+create_interaction_features(data = NULL, col1, col2, dataset_name = NULL)
 }
 \arguments{
-\item{data}{A data frame}
+\item{data}{A data frame (optional if dataset_name provided)}
 
 \item{col1}{First column name}
 
 \item{col2}{Second column name}
+
+\item{dataset_name}{Character. Name of registered dataset to use.}
 }
 \value{
 Data frame with interaction term

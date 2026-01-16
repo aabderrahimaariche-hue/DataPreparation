@@ -4,16 +4,24 @@
 \alias{compute_identifier_deviation}
 \title{Compute Deviation/Bias Detection for Identifiers}
 \usage{
-compute_identifier_deviation(data, identifier_col, value_col, reference_col)
+compute_identifier_deviation(
+  data = NULL,
+  identifier_col,
+  value_col,
+  reference_col,
+  dataset_name = NULL
+)
 }
 \arguments{
-\item{data}{A data frame with at least: identifier_col, value_col, reference_col}
+\item{data}{A data frame with at least: identifier_col, value_col, reference_col (optional if dataset_name provided)}
 
 \item{identifier_col}{Identifier column name (e.g., "userId")}
 
 \item{value_col}{Value column name (e.g., "rating")}
 
 \item{reference_col}{Reference column name for comparison (e.g., "movie_avg_rating")}
+
+\item{dataset_name}{Character. Name of registered dataset to use.}
 }
 \value{
 Data frame with original columns + deviation metrics:

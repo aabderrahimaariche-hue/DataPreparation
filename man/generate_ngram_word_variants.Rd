@@ -4,16 +4,24 @@
 \alias{generate_ngram_word_variants}
 \title{Generate Word-level N-grams}
 \usage{
-generate_ngram_word_variants(data, string_cols, ngram_min = 1, ngram_max = 3)
+generate_ngram_word_variants(
+  data = NULL,
+  string_cols,
+  ngram_min = 1,
+  ngram_max = 3,
+  dataset_name = NULL
+)
 }
 \arguments{
-\item{data}{A data frame containing string columns.}
+\item{data}{A data frame containing string columns (optional if dataset_name provided).}
 
 \item{string_cols}{Character vector of column names to extract word n-grams from.}
 
 \item{ngram_min}{Numeric. Minimum n-gram size (default: 1 for single words).}
 
 \item{ngram_max}{Numeric. Maximum n-gram size (default: 3).}
+
+\item{dataset_name}{Character. Name of registered dataset to use.}
 }
 \value{
 A named list where each element is a data frame containing:

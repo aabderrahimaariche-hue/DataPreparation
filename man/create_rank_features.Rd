@@ -4,14 +4,16 @@
 \alias{create_rank_features}
 \title{Create Rank Features}
 \usage{
-create_rank_features(data, col, group_col = NULL)
+create_rank_features(data = NULL, col, group_col = NULL, dataset_name = NULL)
 }
 \arguments{
-\item{data}{A data frame}
+\item{data}{A data frame (optional if dataset_name provided)}
 
 \item{col}{Column name (character)}
 
 \item{group_col}{Optional grouping column}
+
+\item{dataset_name}{Character. Name of registered dataset to use.}
 }
 \value{
 Data frame with rank column

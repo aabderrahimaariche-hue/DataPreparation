@@ -5,20 +5,23 @@
 \title{Extract Primary (First) Category}
 \usage{
 extract_primary_category(
-  data,
+  data = NULL,
   identifier_col,
   categorical_col,
-  delimiter = "\\\\\\\\|"
+  delimiter = "\\\\\\\\|",
+  dataset_name = NULL
 )
 }
 \arguments{
-\item{data}{A data frame}
+\item{data}{A data frame (optional if dataset_name provided)}
 
 \item{identifier_col}{Column name containing entity identifiers}
 
 \item{categorical_col}{Column name with delimited categories}
 
 \item{delimiter}{Pattern to split categories (default: "\\\\|")}
+
+\item{dataset_name}{Character. Name of registered dataset to use.}
 }
 \value{
 Data frame with identifier_col and primary_category column

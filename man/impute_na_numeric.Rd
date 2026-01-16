@@ -4,22 +4,18 @@
 \alias{impute_na_numeric}
 \title{Impute NA in Numeric Column with Median}
 \usage{
-impute_na_numeric(data, col)
+impute_na_numeric(data = NULL, col, dataset_name = NULL)
 }
 \arguments{
-\item{data}{A data frame}
+\item{data}{A data frame (optional if dataset_name provided)}
 
 \item{col}{Column name (character)}
+
+\item{dataset_name}{Character. Name of registered dataset to use.}
 }
 \value{
 Data frame with NA values imputed with median
 }
 \description{
 Impute NA in Numeric Column with Median
-}
-\examples{
-\dontrun{
-impute_na_numeric(mtcars, "mpg")
-}
-
 }

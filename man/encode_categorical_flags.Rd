@@ -5,15 +5,16 @@
 \title{Encode Categorical Data into Binary Flags (One-Hot Encoding)}
 \usage{
 encode_categorical_flags(
-  data,
+  data = NULL,
   categorical_col,
   identifier_col = NULL,
   delimiter = "\\\\\\\\|",
-  prefix = NULL
+  prefix = NULL,
+  dataset_name = NULL
 )
 }
 \arguments{
-\item{data}{A data frame containing categorical column}
+\item{data}{A data frame containing categorical column (optional if dataset_name provided)}
 
 \item{categorical_col}{Column name with delimited categories (e.g., "genres")}
 
@@ -22,6 +23,8 @@ encode_categorical_flags(
 \item{delimiter}{Pattern to split categories (default: "\\\\|" for pipe)}
 
 \item{prefix}{Optional: prefix for output columns (default: category name)}
+
+\item{dataset_name}{Character. Name of registered dataset to use.}
 }
 \value{
 Data frame with one-hot encoded binary columns (0/1 for each category)

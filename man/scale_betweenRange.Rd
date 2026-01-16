@@ -4,16 +4,24 @@
 \alias{scale_betweenRange}
 \title{Scale Numeric Values to 0-1 Range}
 \usage{
-scale_betweenRange(data, col, min_val = NULL, max_val = NULL)
+scale_betweenRange(
+  data = NULL,
+  col,
+  min_val = NULL,
+  max_val = NULL,
+  dataset_name = NULL
+)
 }
 \arguments{
-\item{data}{A data frame}
+\item{data}{A data frame (optional if dataset_name provided)}
 
 \item{col}{Column name (character)}
 
 \item{min_val}{Minimum value (default: column min)}
 
 \item{max_val}{Maximum value (default: column max)}
+
+\item{dataset_name}{Character. Name of registered dataset to use.}
 }
 \value{
 Data frame with scaled column

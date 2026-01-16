@@ -15,11 +15,12 @@ NULL
 #' patterns in the dataset. Creates both structural features (length, word count, etc.)
 #' and binary flags for high-frequency words and suffix patterns found in the data.
 #'
-#' @param data A data frame containing the string column to analyze.
+#' @param data A data frame containing the string column to analyze (optional if dataset_name provided).
 #' @param string_col Character. Name of the string column to analyze (default: "title").
 #' @param id_col Character. Unique identifier column (default: "movieId").
 #' @param min_word_frequency Numeric. Minimum frequency threshold for extracting
 #'   high-frequency words (default: 5).
+#' @param dataset_name Character. Name of registered dataset to use.
 #'
 #' @return A list containing:
 #'   \describe{
@@ -35,8 +36,18 @@ NULL
 #' }
 #'
 #' @export
-extract_string_linguistic_profile <- function(data, string_col = "title", id_col = "movieId",
-                                              min_word_frequency = 5) {
+extract_string_linguistic_profile <- function(data = NULL, string_col = "title", id_col = "movieId",
+                                              min_word_frequency = 5, dataset_name = NULL) {
+  # Smart data resolution
+  if (!is.null(dataset_name)) {
+    data <- get_registered_dataset(dataset_name)
+  } else if (is.null(data)) {
+    data <- resolve_data_source(data)
+  }
+  
+  if (is.null(data)) {
+    stop("Provide 'data' parameter or set focus_dataset()")
+  }
   
   # 1. Basic structural features (always consistent)
   string_profile <- data %>%
@@ -110,11 +121,12 @@ extract_string_linguistic_profile <- function(data, string_col = "title", id_col
 #' by comparing average ratings when features are present vs. absent.
 #' Dynamically discovers linguistic features from the dataset.
 #'
-#' @param data A data frame with string column, target variable, and ID column.
+#' @param data A data frame with string column, target variable, and ID column (optional if dataset_name provided).
 #' @param string_col Character. String column to analyze (default: "title").
 #' @param id_col Character. Unique identifier column (default: "movieId").
 #' @param rating_col Character. Target variable column (default: "rating").
 #' @param min_word_frequency Numeric. Minimum word frequency threshold (default: 5).
+#' @param dataset_name Character. Name of registered dataset to use.
 #'
 #' @return A list containing:
 #'   \describe{
@@ -132,8 +144,18 @@ extract_string_linguistic_profile <- function(data, string_col = "title", id_col
 #' }
 #'
 #' @export
-compute_global_linguistic_effects <- function(data, string_col = "title", id_col = "movieId",
-                                             rating_col = "rating", min_word_frequency = 5) {
+compute_global_linguistic_effects <- function(data = NULL, string_col = "title", id_col = "movieId",
+                                             rating_col = "rating", min_word_frequency = 5, dataset_name = NULL) {
+  # Smart data resolution
+  if (!is.null(dataset_name)) {
+    data <- get_registered_dataset(dataset_name)
+  } else if (is.null(data)) {
+    data <- resolve_data_source(data)
+  }
+  
+  if (is.null(data)) {
+    stop("Provide 'data' parameter or set focus_dataset()")
+  }
   
   # Step 1: Extract linguistic profile dynamically from dataset
   linguistic_result <- extract_string_linguistic_profile(data, string_col, id_col, min_word_frequency)
@@ -190,12 +212,13 @@ compute_global_linguistic_effects <- function(data, string_col = "title", id_col
 #' average ratings for each user when features are present vs. absent.
 #' Dynamically discovers features from the dataset.
 #'
-#' @param data A data frame with user, string, and rating columns.
+#' @param data A data frame with user, string, and rating columns (optional if dataset_name provided).
 #' @param string_col Character. String column to analyze (default: "title").
 #' @param id_col Character. Item ID column (default: "movieId").
 #' @param user_col Character. User identifier column (default: "userId").
 #' @param rating_col Character. Target variable column (default: "rating").
 #' @param min_word_frequency Numeric. Minimum word frequency threshold (default: 5).
+#' @param dataset_name Character. Name of registered dataset to use.
 #'
 #' @return A list containing:
 #'   \describe{
@@ -212,9 +235,19 @@ compute_global_linguistic_effects <- function(data, string_col = "title", id_col
 #' }
 #'
 #' @export
-compute_user_linguistic_preferences <- function(data, string_col = "title", id_col = "movieId",
+compute_user_linguistic_preferences <- function(data = NULL, string_col = "title", id_col = "movieId",
                                                user_col = "userId", rating_col = "rating",
-                                               min_word_frequency = 5) {
+                                               min_word_frequency = 5, dataset_name = NULL) {
+  # Smart data resolution
+  if (!is.null(dataset_name)) {
+    data <- get_registered_dataset(dataset_name)
+  } else if (is.null(data)) {
+    data <- resolve_data_source(data)
+  }
+  
+  if (is.null(data)) {
+    stop("Provide 'data' parameter or set focus_dataset()")
+  }
   
   # Step 1: Extract linguistic profile dynamically from dataset
   linguistic_result <- extract_string_linguistic_profile(data, string_col, id_col, min_word_frequency)
@@ -271,12 +304,13 @@ compute_user_linguistic_preferences <- function(data, string_col = "title", id_c
 #' Compatibility = feature presence × user preference for that feature.
 #' Enables personalized linguistic feature matching.
 #'
-#' @param data A data frame with user, string, and rating columns.
+#' @param data A data frame with user, string, and rating columns (optional if dataset_name provided).
 #' @param string_col Character. String column to analyze (default: "title").
 #' @param id_col Character. Item ID column (default: "movieId").
 #' @param user_col Character. User identifier column (default: "userId").
 #' @param rating_col Character. Target variable column (default: "rating").
 #' @param min_word_frequency Numeric. Minimum word frequency threshold (default: 5).
+#' @param dataset_name Character. Name of registered dataset to use.
 #'
 #' @return A list containing:
 #'   \describe{
@@ -293,9 +327,19 @@ compute_user_linguistic_preferences <- function(data, string_col = "title", id_c
 #' }
 #'
 #' @export
-compute_user_linguistic_compatibility <- function(data, string_col = "title", id_col = "movieId",
+compute_user_linguistic_compatibility <- function(data = NULL, string_col = "title", id_col = "movieId",
                                                   user_col = "userId", rating_col = "rating",
-                                                  min_word_frequency = 5) {
+                                                  min_word_frequency = 5, dataset_name = NULL) {
+  # Smart data resolution
+  if (!is.null(dataset_name)) {
+    data <- get_registered_dataset(dataset_name)
+  } else if (is.null(data)) {
+    data <- resolve_data_source(data)
+  }
+  
+  if (is.null(data)) {
+    stop("Provide 'data' parameter or set focus_dataset()")
+  }
   
   # Step 1: Extract linguistic profile
   linguistic_result <- extract_string_linguistic_profile(data, string_col, id_col, min_word_frequency)

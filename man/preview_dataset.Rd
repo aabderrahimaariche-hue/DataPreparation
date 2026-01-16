@@ -4,12 +4,14 @@
 \alias{preview_dataset}
 \title{Display Dataset Preview}
 \usage{
-preview_dataset(data, n_rows = 5)
+preview_dataset(data = NULL, n_rows = 5, dataset_name = NULL)
 }
 \arguments{
-\item{data}{A data frame to preview}
+\item{data}{A data frame to preview (optional if dataset_name provided)}
 
 \item{n_rows}{Number of rows to display (default: 5)}
+
+\item{dataset_name}{Character. Name of registered dataset to use.}
 }
 \value{
 NULL (invisibly). Prints formatted preview.

@@ -5,20 +5,23 @@
 \title{Compute Category-Valeurization Statistics}
 \usage{
 compute_category_statistics(
-  data,
+  data = NULL,
   categorical_col,
   value_col,
-  delimiter = "\\\\\\\\|"
+  delimiter = "\\\\\\\\|",
+  dataset_name = NULL
 )
 }
 \arguments{
-\item{data}{A data frame with delimited categorical column}
+\item{data}{A data frame with delimited categorical column (optional if dataset_name provided)}
 
 \item{categorical_col}{Column name with delimited categories}
 
 \item{value_col}{Column name with numeric values to aggregate}
 
 \item{delimiter}{Pattern to split categories (default: "\\\\|")}
+
+\item{dataset_name}{Character. Name of registered dataset to use.}
 }
 \value{
 Data frame with one row per category showing statistics:

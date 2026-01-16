@@ -4,14 +4,16 @@
 \alias{flag_outliers_zscore}
 \title{Flag Outliers (Z-Score Method)}
 \usage{
-flag_outliers_zscore(data, col, threshold = 3)
+flag_outliers_zscore(data = NULL, col, threshold = 3, dataset_name = NULL)
 }
 \arguments{
-\item{data}{A data frame}
+\item{data}{A data frame (optional if dataset_name provided)}
 
 \item{col}{Column name (character)}
 
 \item{threshold}{Z-score threshold}
+
+\item{dataset_name}{Character. Name of registered dataset to use.}
 }
 \value{
 Data frame with outlier flag

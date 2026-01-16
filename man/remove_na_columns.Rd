@@ -4,18 +4,27 @@
 \alias{remove_na_columns}
 \title{Remove Rows with NA in Specified Columns}
 \usage{
-remove_na_columns(data, columns_to_check)
+remove_na_columns(data = NULL, columns_to_check, dataset_name = NULL)
 }
 \arguments{
-\item{data}{A data frame}
+\item{data}{A data frame (optional if dataset_name provided)}
 
 \item{columns_to_check}{Vector of column names to check for NA}
+
+\item{dataset_name}{Character. Name of registered dataset to use.}
 }
 \value{
 Data frame with rows containing NA removed
 }
 \description{
 Remove Rows with NA in Specified Columns
+}
+\details{
+Supports both traditional and focus mode usage:
+\itemize{
+  \item Traditional: \code{remove_na_columns(data = df, columns_to_check = ...)}
+  \item Focus mode: Set \code{focus_dataset("name")} then \code{remove_na_columns(columns_to_check = ...)}
+}
 }
 \examples{
 \dontrun{

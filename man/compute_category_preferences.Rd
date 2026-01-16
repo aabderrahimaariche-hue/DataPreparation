@@ -5,15 +5,16 @@
 \title{Compute Entity-Category Preferences}
 \usage{
 compute_category_preferences(
-  data,
+  data = NULL,
   identifier_col,
   categorical_col,
   value_col,
-  delimiter = "\\\\\\\\|"
+  delimiter = "\\\\\\\\|",
+  dataset_name = NULL
 )
 }
 \arguments{
-\item{data}{A data frame with identifier, categories, and values}
+\item{data}{A data frame with identifier, categories, and values (optional if dataset_name provided)}
 
 \item{identifier_col}{Column name with entity identifiers (e.g., "userId")}
 
@@ -22,6 +23,8 @@ compute_category_preferences(
 \item{value_col}{Column name with numeric values (e.g., "rating")}
 
 \item{delimiter}{Pattern to split categories (default: "\\\\|")}
+
+\item{dataset_name}{Character. Name of registered dataset to use.}
 }
 \value{
 Data frame with one row per entity showing preference per category

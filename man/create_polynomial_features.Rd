@@ -4,14 +4,16 @@
 \alias{create_polynomial_features}
 \title{Create Polynomial Features}
 \usage{
-create_polynomial_features(data, col, degree = 2)
+create_polynomial_features(data = NULL, col, degree = 2, dataset_name = NULL)
 }
 \arguments{
-\item{data}{A data frame}
+\item{data}{A data frame (optional if dataset_name provided)}
 
 \item{col}{Column name (character)}
 
 \item{degree}{Degree of polynomial (2 or 3)}
+
+\item{dataset_name}{Character. Name of registered dataset to use.}
 }
 \value{
 Data frame with polynomial feature columns

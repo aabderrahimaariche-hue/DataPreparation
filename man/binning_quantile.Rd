@@ -4,14 +4,16 @@
 \alias{binning_quantile}
 \title{Bin Numeric Column (Quantile-Based)}
 \usage{
-binning_quantile(data, col, n_bins = 5)
+binning_quantile(data = NULL, col, n_bins = 5, dataset_name = NULL)
 }
 \arguments{
-\item{data}{A data frame}
+\item{data}{A data frame (optional if dataset_name provided)}
 
 \item{col}{Column name (character)}
 
 \item{n_bins}{Number of bins}
+
+\item{dataset_name}{Character. Name of registered dataset to use.}
 }
 \value{
 Data frame with binned column

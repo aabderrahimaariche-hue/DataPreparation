@@ -4,12 +4,18 @@
 \alias{extract_timestamp_features}
 \title{Extract Timestamp Features}
 \usage{
-extract_timestamp_features(data, timestamp_col = "timestamp")
+extract_timestamp_features(
+  data = NULL,
+  timestamp_col = "timestamp",
+  dataset_name = NULL
+)
 }
 \arguments{
-\item{data}{A data frame}
+\item{data}{A data frame (optional if dataset_name provided)}
 
 \item{timestamp_col}{Timestamp column name}
+
+\item{dataset_name}{Character. Name of registered dataset to use.}
 }
 \value{
 Data frame with extracted timestamp features (year, month, day, wday)

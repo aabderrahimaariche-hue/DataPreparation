@@ -4,12 +4,14 @@
 \alias{detect_extract_half_full}
 \title{Detect Half vs Full Ratings}
 \usage{
-detect_extract_half_full(data, col)
+detect_extract_half_full(data = NULL, col, dataset_name = NULL)
 }
 \arguments{
-\item{data}{A data frame}
+\item{data}{A data frame (optional if dataset_name provided)}
 
 \item{col}{Column name (character)}
+
+\item{dataset_name}{Character. Name of registered dataset to use.}
 }
 \value{
 Data frame with half/full flag

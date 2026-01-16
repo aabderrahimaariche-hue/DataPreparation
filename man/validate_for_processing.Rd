@@ -5,15 +5,16 @@
 \title{Validate Dataset for Specific Functions}
 \usage{
 validate_for_processing(
-  data,
+  data = NULL,
   string_cols = NULL,
   numeric_cols = NULL,
   id_col = NULL,
-  verbose = TRUE
+  verbose = TRUE,
+  dataset_name = NULL
 )
 }
 \arguments{
-\item{data}{A data frame to validate}
+\item{data}{A data frame to validate (optional if dataset_name provided)}
 
 \item{string_cols}{Character vector of column names to use as strings
 (for n-gram generation, linguistic analysis, etc.)}
@@ -25,6 +26,8 @@ validate_for_processing(
 each row (for linguistic analysis functions)}
 
 \item{verbose}{Logical. If TRUE, prints validation report}
+
+\item{dataset_name}{Character. Name of registered dataset to use.}
 }
 \value{
 Logical. TRUE if valid, FALSE otherwise (invisibly)

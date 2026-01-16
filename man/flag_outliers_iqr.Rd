@@ -4,14 +4,16 @@
 \alias{flag_outliers_iqr}
 \title{Flag Outliers (IQR Method)}
 \usage{
-flag_outliers_iqr(data, col, multiplier = 1.5)
+flag_outliers_iqr(data = NULL, col, multiplier = 1.5, dataset_name = NULL)
 }
 \arguments{
-\item{data}{A data frame}
+\item{data}{A data frame (optional if dataset_name provided)}
 
 \item{col}{Column name (character)}
 
 \item{multiplier}{IQR multiplier}
+
+\item{dataset_name}{Character. Name of registered dataset to use.}
 }
 \value{
 Data frame with outlier flag

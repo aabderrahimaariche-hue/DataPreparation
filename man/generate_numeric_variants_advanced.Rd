@@ -5,16 +5,17 @@
 \title{Generate Advanced Numeric Variants}
 \usage{
 generate_numeric_variants_advanced(
-  data,
+  data = NULL,
   numeric_cols,
   include_poly = TRUE,
   include_transforms = TRUE,
   include_bins = TRUE,
-  include_outliers = TRUE
+  include_outliers = TRUE,
+  dataset_name = NULL
 )
 }
 \arguments{
-\item{data}{A data frame}
+\item{data}{A data frame (optional if dataset_name provided)}
 
 \item{numeric_cols}{Vector of numeric column names}
 
@@ -25,6 +26,8 @@ generate_numeric_variants_advanced(
 \item{include_bins}{Include binning features}
 
 \item{include_outliers}{Include outlier flags}
+
+\item{dataset_name}{Character. Name of registered dataset to use.}
 }
 \value{
 List of advanced variant datasets

@@ -4,12 +4,18 @@
 \alias{extract_year_from_string}
 \title{Extract 4-Digit Year from String Column}
 \usage{
-extract_year_from_string(data, string_col = "string")
+extract_year_from_string(
+  data = NULL,
+  string_col = "string",
+  dataset_name = NULL
+)
 }
 \arguments{
-\item{data}{A data frame}
+\item{data}{A data frame (optional if dataset_name provided)}
 
 \item{string_col}{String column name to extract year from}
+
+\item{dataset_name}{Character. Name of registered dataset to use.}
 }
 \value{
 Data frame with extracted year column

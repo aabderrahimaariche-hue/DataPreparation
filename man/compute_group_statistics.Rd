@@ -4,14 +4,21 @@
 \alias{compute_group_statistics}
 \title{Compute Group-Wise Statistics}
 \usage{
-compute_group_statistics(data, group_col, numeric_col)
+compute_group_statistics(
+  data = NULL,
+  group_col,
+  numeric_col,
+  dataset_name = NULL
+)
 }
 \arguments{
-\item{data}{A data frame}
+\item{data}{A data frame (optional if dataset_name provided)}
 
 \item{group_col}{Grouping column name}
 
 \item{numeric_col}{Numeric column name}
+
+\item{dataset_name}{Character. Name of registered dataset to use.}
 }
 \value{
 Data frame with group statistics joined

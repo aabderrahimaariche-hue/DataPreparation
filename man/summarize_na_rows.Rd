@@ -4,20 +4,16 @@
 \alias{summarize_na_rows}
 \title{Summarize NA Impact at Row Level}
 \usage{
-summarize_na_rows(data)
+summarize_na_rows(data = NULL, dataset_name = NULL)
 }
 \arguments{
-\item{data}{A data frame}
+\item{data}{A data frame (optional if dataset_name provided)}
+
+\item{dataset_name}{Character. Name of registered dataset to use.}
 }
 \value{
 Tibble with NA summary statistics
 }
 \description{
 Summarize NA Impact at Row Level
-}
-\examples{
-\dontrun{
-summarize_na_rows(mtcars)
-}
-
 }

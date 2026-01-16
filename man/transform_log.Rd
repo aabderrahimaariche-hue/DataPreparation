@@ -4,14 +4,16 @@
 \alias{transform_log}
 \title{Apply Logarithmic Transformation}
 \usage{
-transform_log(data, col, offset = 1)
+transform_log(data = NULL, col, offset = 1, dataset_name = NULL)
 }
 \arguments{
-\item{data}{A data frame}
+\item{data}{A data frame (optional if dataset_name provided)}
 
 \item{col}{Column name (character)}
 
 \item{offset}{Offset to add before log transformation}
+
+\item{dataset_name}{Character. Name of registered dataset to use.}
 }
 \value{
 Data frame with log-transformed column
