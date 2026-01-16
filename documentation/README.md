@@ -302,7 +302,8 @@ For issues, questions, or suggestions, please open an issue on [GitHub](https://
 - **[core-foundation/PROFESSIONAL_SCALABLE_TOOLKIT_GUIDE.md](startup-cores/core-foundation/PROFESSIONAL_SCALABLE_TOOLKIT_GUIDE.md)** - All 67 functions with signatures
 
 ### 📋 Workflow Guides
-- **[guides/](guides/)** - 16 comprehensive workflow tutorials
+- **[guides/INDEX.md](guides/INDEX.md)** - Complete guides navigation and index (START HERE for workflow docs)
+- **[guides/](guides/)** - 16 comprehensive workflow tutorials and advanced guides
 - **[WORKFLOW_GENERATOR_GUIDE.md](../WORKFLOW_GENERATOR_GUIDE.md)** - Auto-generate analysis workflows
 - **[EXAMPLE_WORKFLOW.R](../EXAMPLE_WORKFLOW.R)** - Working code example
 - **[EXAMPLE_CANCER_WORKFLOW.R](../EXAMPLE_CANCER_WORKFLOW.R)** - Medical domain example
