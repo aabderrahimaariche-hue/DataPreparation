@@ -462,7 +462,7 @@ generate_workflow_script <- function(dataset_name, string_col, numeric_col,
       )
     }
   }
-  
+
   # Summary and insights
   if (analysis_type == "Full Analysis" && !is.null(string_col) && !is.null(numeric_col)) {
     script <- paste0(script,
@@ -479,7 +479,7 @@ generate_workflow_script <- function(dataset_name, string_col, numeric_col,
       "check_memory_usage()\n\n"
     )
   }
-  
+
   # Conclusion
   script <- paste0(script,
     "cat('\\n✅ WORKFLOW COMPLETE!\\n\\n')\n",
