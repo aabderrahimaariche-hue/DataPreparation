@@ -66,6 +66,72 @@ extract_year_from_description <- function(data, col) {
 years_desc <- extract_year_from_description(movies, "description")
 ```
 
+**✅ Recommended Workflow: Library Functions → Wrapper Functions**
+
+The DataPreparation package follows a **three-layer architecture** for maximum flexibility and reusability:
+
+1. **Layer 1: Use Library Modules & General Functions**
+   - Import DataPreparation generic functions
+   - These are intentionally general-purpose for reuse across projects
+
+2. **Layer 2: Create Project-Specific Wrapper Functions**
+   - Wrap library functions for your specific domain/context
+   - Add domain logic, validation, and custom parameters
+   - Makes code readable and maintains separation of concerns
+
+3. **Layer 3: Execute Wrapped Functions**
+   - Use wrapped functions in your analysis workflows
+   - Benefits from both library power and domain specificity
+
+**Example: MovieLens Recommender System**
+```r
+# ❌ AVOID: Using library functions directly in analysis code
+result <- extract_year_from_string(movielens, "title")
+genres <- generate_ngram_char_variants(movielens, "genres", 2)
+
+# ✅ RECOMMENDED: Create wrapper layer for MovieLens domain
+# File: wrappers/movielens_features.R
+
+# Layer 2: Domain-specific wrappers
+extract_year_from_title <- function(data, dataset_name = NULL) {
+  extract_year_from_string(data = data, string_col = "title", dataset_name = dataset_name)
+}
+
+extract_genres_ngrams <- function(data, dataset_name = NULL, n = 2) {
+  generate_ngram_char_variants(data = data, string_col = "genres", n_min = n, 
+                               n_max = n, dataset_name = dataset_name)
+}
+
+encode_movie_rating <- function(data, dataset_name = NULL) {
+  normalize_numeric(data = data, numeric_col = "rating", dataset_name = dataset_name)
+}
+
+# Layer 3: Execute in analysis workflow
+movielens_engineered <- movielens %>%
+  extract_year_from_title() %>%
+  extract_genres_ngrams(n = 3) %>%
+  encode_movie_rating()
+```
+
+**Benefits of This Workflow**:
+- ✅ **Clarity**: Function names are explicit about context (e.g., `extract_year_from_title` vs generic `extract_year_from_string`)
+- ✅ **Maintainability**: Changes to domain logic in one place (wrapper function)
+- ✅ **Reusability**: Wrappers are project-specific but built on general library foundations
+- ✅ **Testing**: Easier to test domain logic independently
+- ✅ **Documentation**: Wrappers document *why* you're using library functions (e.g., extracting from movie titles)
+- ✅ **Library Upgrades**: When DataPreparation updates, wrappers adapt painlessly
+
+**When to Use Direct Library Functions**:
+- Quick exploratory analysis (one-off operations)
+- Simple transformations without domain context
+- Testing and prototyping
+
+**When to Use Wrappers**:
+- Production workflows (reusable across projects)
+- Complex domain logic
+- Functions called multiple times in analysis
+- Team collaboration (clear intent for other developers)
+
 **Modular Code Snippets**:
 - Functions can be **easily imported** and combined
 - Chain operations without dependencies
