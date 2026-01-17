@@ -162,7 +162,8 @@ Comprehensive numeric feature engineering with 30+ functions:
 ### ⏰ Module 3: Timestamp Features
 Extract temporal patterns:
 - `extract_timestamp_features()` - Extract year/month/day/weekday from timestamps
-- `extract_year_from_string()` - Extract 4-digit year from strings
+- `extract_year_from_string()` - Extract first 4-digit year from strings
+- `extract_years_from_string()` - Extract ALL 4-digit years with position information (NEW)
 
 ### 📝 Module 4: String Features
 String processing and feature validation:
@@ -285,10 +286,11 @@ The DataPreparation package is organized into **9 functional modules**, each add
 - Purpose: Engineer and transform numeric variables
 - Use when: Working with quantitative data (sales, measurements, metrics)
 
-#### **Module 3: Timestamp Features (2 functions)**
-- Functions: `extract_timestamp_features()`, `extract_year_from_string()`
-- Purpose: Extract temporal patterns from dates/times
-- Use when: Data contains date/time variables
+#### **Module 3: Timestamp Features (3 functions)**
+- Functions: `extract_timestamp_features()`, `extract_year_from_string()`, `extract_years_from_string()`
+- Purpose: Extract temporal patterns from dates/times and years from text strings
+- Use when: Data contains date/time variables or text with multiple year occurrences
+- **NEW**: `extract_years_from_string()` - Extracts all years from text with their exact positions
 
 #### **Module 4: String Features (3 functions)**
 - Functions: String processing, validation, variant generation
