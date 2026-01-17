@@ -4,6 +4,143 @@ A comprehensive, modular R package for data preparation and feature engineering.
 
 ## ✨ Features
 
+### 🎯 Core System Features
+
+#### **📊 Dataset Registry & Focus Mode**
+Work seamlessly with multiple datasets in memory:
+- `register_dataset()` - Register datasets with custom names
+- `focus_dataset()` - Set active dataset for automatic parameter resolution
+- `drop_dataset()` - Remove datasets and free memory
+- Three usage modes for every function:
+  1. **Explicit**: `function(data, param)` - Always works
+  2. **Dataset Name**: `function(dataset_name = "name", param)` - Named datasets
+  3. **Focus Mode**: `focus_dataset("name"); function(param)` - Most convenient
+
+**Example**:
+```r
+# Register multiple datasets
+register_dataset(movies, "movies")
+register_dataset(cancer_data, "cancer")
+
+# Switch focus and use automatically
+focus_dataset("movies")
+normalized <- normalize_numeric("rating")  # Auto-uses focused dataset
+
+focus_dataset("cancer")
+encoded <- encode_categorical_flags("diagnosis")  # Auto-switches
+```
+
+#### **⚡ Automatic Conflict Resolution**
+- **14 managed conflicts** between common libraries (dplyr, tidyr, zoo, etc.)
+- **Zero configuration** - conflicts resolved automatically at package load
+- **100% backward compatible** - functions work regardless of load order
+
+**Resolved Conflicts**: `filter`, `select`, `mutate`, `summarise`, `group_by`, `rename`, `arrange`, `distinct`, `lag`, `lead`, `intersect`, `setdiff`, `union`
+
+#### **💾 Memory Management**
+- `get_memory_summary()` - View RAM usage of all datasets
+- `get_dataset_size()` - Check individual dataset size
+- `drop_by_pattern()` - Remove datasets matching pattern (e.g., `temp_*`)
+- `drop_datasets()` - Remove multiple datasets at once
+- Monitor and optimize RAM for large data workflows
+
+#### **🏗️ Modular & Composable Architecture**
+Functions are designed as **reusable building blocks** that can be easily combined and extended:
+
+**General-Purpose Design**:
+- Functions use **generic names** based on operation, not context
+- Example: `extract_year_from_string()` works on ANY string column (title, description, date text, etc.)
+- **Not**: `extract_year_from_title()`, `extract_year_from_description()` (redundant)
+
+**Easy Extension**:
+```r
+# Built-in general function
+years <- extract_year_from_string(movies, "title")
+
+# Need year from description? Just wrap it:
+extract_year_from_description <- function(data, col) {
+  extract_year_from_string(data, col)
+}
+
+# Now use it
+years_desc <- extract_year_from_description(movies, "description")
+```
+
+**Modular Code Snippets**:
+- Functions can be **easily imported** and combined
+- Chain operations without dependencies
+- No tight coupling between modules
+- Compose complex workflows from simple functions
+
+**Benefits**:
+- ✅ Less code duplication
+- ✅ Easier to maintain
+- ✅ Flexible for custom use cases
+- ✅ Encourages composition over inheritance
+- ✅ Follows Unix philosophy: "Do one thing well"
+
+#### **🔍 Data Format Flexibility**
+Seamless support for multiple data structures:
+- **data.frame** - Standard R data frames
+- **data.table** - High-performance data tables from `data.table` package
+- **tibble** - Modern data frames from `tidyverse`
+- **Automatic Conversion** - Input format preserved in output
+- **No Manual Conversion** - Functions handle format detection internally
+
+**Example**:
+```r
+# Works with data.table
+dt <- data.table::data.table(x = 1:5, y = c(10, 20, 30, 40, 50))
+result <- normalize_numeric(dt, "y")  # Returns data.table
+class(result)  # "data.table"
+
+# Works with data.frame
+df <- data.frame(x = 1:5, y = c(10, 20, 30, 40, 50))
+result <- normalize_numeric(df, "y")  # Returns data.frame
+class(result)  # "data.frame"
+```
+
+#### **📊 Comprehensive Data Inspection**
+Before processing, understand and validate your data:
+- `inspect_dataset()` - Get complete dataset overview (structure, types, missing values, memory)
+- `validate_for_processing()` - Check if data is suitable for functions
+- `preview_dataset()` - Display formatted data preview
+- `detect_datasets()` - Auto-discover all datasets in memory
+- `show_dataset_columns()` - Display column names and types with analysis hints
+- **Data Quality Score** - Automatic quality assessment
+
+**Example**:
+```r
+# Inspect before processing
+inspect_dataset(movies)
+# Output: dimensions, column types, missing values %, memory usage, quality score
+
+# Detect what datasets are available
+detect_datasets()
+# Output: All data frames in memory with row/column counts
+```
+
+#### **🚀 Automatic Workflow Generation**
+Zero-code analysis workflows for rapid prototyping:
+- `generate_workflow_interactive()` - Menu-driven workflow builder
+- `generate_workflow_script()` - Auto-generates complete R script
+- `workflow_extract_drop()` - Automated load → extract → drop pattern for large data
+- **Intelligent Column Selection** - Detects suitable columns automatically
+- **Timestamped Scripts** - Saves reproducible workflow files
+
+**One-Command Analysis**:
+```r
+# Interactive menu-guided workflow generation
+generate_workflow_interactive()
+# Follow prompts → Complete analysis script is generated
+
+# Or auto-generate for a specific dataset
+generate_workflow_script(cancer_data, "diagnosis", "survival")
+# Generates: workflow_cancer_20260116_140530.R
+```
+
+---
+
 ### 📦¦ Module 1: NA Handling
 Functions for managing missing values:
 - `remove_na_columns()` - Remove rows with NA in specified columns
@@ -296,7 +433,6 @@ See complete workflow examples:
 - **Medical Domain**: [EXAMPLE_CANCER_WORKFLOW.R](EXAMPLE_CANCER_WORKFLOW.R)
 - **Interactive Generator**: Use `generate_workflow_interactive()` in R console
 
----
 ## ▶️ Quick Start
 
 ### Example 0: Automatic Workflow Generation (NEW!)
